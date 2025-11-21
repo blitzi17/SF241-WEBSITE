@@ -21,7 +21,7 @@
             box-sizing: border-box;
         }
 
-        /* CRITICAL CHANGE: Set body background to transparent */
+        /* Set body background to transparent for the video to show */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -53,9 +53,7 @@
             object-fit: cover; /* Ensures video covers the whole area */
         }
 
-        /* CRITICAL CHANGE: Styles for the content wrapper. 
-           This ensures content is on top and adds contrast.
-        */
+        /* Styles for the content wrapper. This ensures content is on top and adds contrast. */
         #content-wrap {
             position: relative; /* Establish context for z-index */
             z-index: 1; /* Puts the content above the video */
@@ -155,7 +153,7 @@
 
     <div id="video-bg">
         <video autoplay muted loop id="myVideo">
-            <source src="media/media/9968977-uhd_3840_2160_25fps.mp4" type="video/mp4"> 
+            <source src="media/9968977-uhd_3840_2160_25fps.mp4" type="video/mp4"> 
             Your browser does not support HTML5 video.
         </video>
     </div>
