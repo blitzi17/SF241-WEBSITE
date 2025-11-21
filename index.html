@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Main Page</title>
+    <style>
+        /* --- 1. Basic Reset and Global Styles --- */
+        :root {
+            /* Define some color variables for easy changes */
+            --primary-color: #007bff; /* Blue */
+            --secondary-color: #28a745; /* Green */
+            --text-color: #333;
+            --background-color: #f4f4f9;
+            --card-background: #ffffff;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            min-height: 100vh;
+        }
+
+        /* Full-screen background image for the body */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('placeholder-background.jpg'); /* **IMPORTANT: Change this URL to your desired background image** */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keeps background fixed when scrolling */
+            opacity: 0.2; /* Light overlay effect */
+            z-index: -1;
+        }
+
+        /* --- 2. Layout (CSS Grid for Responsiveness) --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            /* Define grid columns: 2 columns for larger screens */
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            padding-top: 50px; /* Space for the header */
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        /* Main content area (right side on desktop) */
+        main {
+            grid-column: 2 / 3; /* Starts at line 2, ends at line 3 (right column) */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Sidebar content (left side on desktop) */
+        .sidebar {
+            grid-column: 1 / 2; /* Starts at line 1, ends at line 2 (left column) */
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            height: fit-content; /* Only take up necessary height */
+            position: sticky; /* Sticky sidebar */
+            top: 100px; /* Space from the top header */
+        }
+
+        /* --- 3. Content Styling (Cards) --- */
+        .card {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-image {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover; /* Ensures image covers area without distortion */
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* --- 4. Responsiveness (Media Queries) --- */
+        @media (max-width: 768px) {
+            .container {
+                /* Change layout to single column on smaller screens */
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            /* Both main and sidebar take the full width */
+            main, .sidebar {
+                grid-column: 1 / -1;
+            }
+
+            /* Remove sticky behavior for sidebar on mobile */
+            .sidebar {
+                position: static;
+                top: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My World</h1>
+        <p>A place to learn a little about me.</p>
+    </header>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <h2>👤 Quick Facts</h2>
+
+            <section>
+                <h3>My Nickname:</h3>
+                <p>The name my friends usually call me is: **[Your Nickname Here]**</p>
+            </section>
+
+            <hr style="margin: 15px 0; border-color: #eee;">
+
+            <section>
+                <h3>My Dream in Life:</h3>
+                <p>My ultimate goal is to **[Your Dream Here, e.g., travel the world, become a lead software engineer, open a small cafe]**.</p>
+                <p>I believe that **[Brief explanation of your dream's importance]**.</p>
+            </section>
+        </aside>
+
+        <main>
+            
+            <section id="about" class="card">
+                <h2>📝 About Me</h2>
+                
+                <img src="placeholder-profile.jpg" alt="A profile picture or highlight image related to you." class="highlight-image">
+                
+                <p>Hello! I'm [Your Name], and I'm passionate about [Your main interests/profession]. I currently live in [Your Location] and spend my days [What you currently do].</p>
+                <p>I find joy in continuous learning and tackling new challenges, especially when it involves [A specific area of interest].</p>
+            </section>
+
+            <section id="hobbies" class="card">
+                <h2>🕹️ Hobbies & Interests</h2>
+                
+                <img src="placeholder-hobby.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
+
+                <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
+                <ul>
+                    <li>**Hobby 1:** [Detail about your first hobby].</li>
+                    <li>**Hobby 2:** [Detail about your second hobby].</li>
+                    <li>**Hobby 3:** [Detail about your third hobby].</li>
+                </ul>
+                <p>I find these activities help me relax and inspire new ideas.</p>
+            </section>
+            
+        </main>
+    </div>
+
+</body>
+</html>
