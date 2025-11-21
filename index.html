@@ -130,6 +130,13 @@
         margin-bottom: 15px;
         display: block;
     }
+    .card img {
+        width: 100%;       /* Forces image to take full width of the box */
+        height: 200px;     /* Sets a fixed height (optional, ensures uniformity) */
+        object-fit: cover; /* Crops the image nicely so it doesn't stretch/distort */
+        display: block;    /* Removes default bottom spacing */
+        border-radius: 8px 8px 0 0; /* Optional: rounds top corners to match card */
+    }
 
     /* --- 4. Responsiveness (Media Queries) --- */
     @media (max-width: 768px) {
@@ -150,6 +157,20 @@
 </style>
 </head>
 <body>
+    <main class="container"> 
+
+      <div class="card">...</div>
+
+      <div class="card">...</div>
+
+      <div class="card">
+          <div class="image-container">
+              <img src="me.jpg" alt="Image of me">
+          </div>
+          <div class="content">
+              <h3>My Profile</h3>
+          </div>
+      </div>
 
     <div id="video-bg">
         <video autoplay muted loop id="myVideo">
