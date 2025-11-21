@@ -11,7 +11,6 @@
             --primary-color: #007bff; /* Blue */
             --secondary-color: #28a745; /* Green */
             --text-color: #333;
-            --background-color: #f4f4f9;
             --card-background: #ffffff;
             --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -22,40 +21,58 @@
             box-sizing: border-box;
         }
 
+        /* CRITICAL CHANGE: Set body background to transparent */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--background-color);
+            background-color: transparent; 
             min-height: 100vh;
         }
 
-        /* Full-screen background image for the body */
-        body::before {
-            content: '';
+        /* --- 2. VIDEO BACKGROUND STYLES --- */
+        #video-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('placeholder-background.jpg'); /* **IMPORTANT: Change this URL to your desired background image** */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Keeps background fixed when scrolling */
-            opacity: 0.2; /* Light overlay effect */
-            z-index: -1;
+            overflow: hidden;
+            z-index: -2; /* Puts the video below all content */
         }
 
-        /* --- 2. Layout (CSS Grid for Responsiveness) --- */
+        #myVideo {
+            min-width: 100%; 
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centers the video */
+            object-fit: cover; /* Ensures video covers the whole area */
+        }
+
+        /* CRITICAL CHANGE: Styles for the content wrapper. 
+           This ensures content is on top and adds contrast.
+        */
+        #content-wrap {
+            position: relative; /* Establish context for z-index */
+            z-index: 1; /* Puts the content above the video */
+            min-height: 100vh;
+            /* Light, semi-transparent overlay to improve text readability */
+            background-color: rgba(255, 255, 255, 0.75); 
+        }
+
+        /* --- 3. Layout and Content Styles (Original Styles) --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             display: grid;
-            /* Define grid columns: 2 columns for larger screens */
             grid-template-columns: 1fr 2fr;
             gap: 30px;
-            padding-top: 50px; /* Space for the header */
+            padding-top: 50px;
         }
 
         header {
@@ -69,27 +86,24 @@
             z-index: 10;
         }
 
-        /* Main content area (right side on desktop) */
         main {
-            grid-column: 2 / 3; /* Starts at line 2, ends at line 3 (right column) */
+            grid-column: 2 / 3;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        /* Sidebar content (left side on desktop) */
         .sidebar {
-            grid-column: 1 / 2; /* Starts at line 1, ends at line 2 (left column) */
+            grid-column: 1 / 2;
             background-color: var(--card-background);
             padding: 20px;
             border-radius: 8px;
             box-shadow: var(--shadow);
-            height: fit-content; /* Only take up necessary height */
-            position: sticky; /* Sticky sidebar */
-            top: 100px; /* Space from the top header */
+            height: fit-content;
+            position: sticky;
+            top: 100px;
         }
 
-        /* --- 3. Content Styling (Cards) --- */
         .card {
             background-color: var(--card-background);
             padding: 30px;
@@ -113,7 +127,7 @@
         .highlight-image {
             width: 100%;
             max-height: 250px;
-            object-fit: cover; /* Ensures image covers area without distortion */
+            object-fit: cover;
             border-radius: 6px;
             margin-bottom: 15px;
             display: block;
@@ -122,17 +136,14 @@
         /* --- 4. Responsiveness (Media Queries) --- */
         @media (max-width: 768px) {
             .container {
-                /* Change layout to single column on smaller screens */
                 grid-template-columns: 1fr;
                 padding: 15px;
             }
 
-            /* Both main and sidebar take the full width */
             main, .sidebar {
                 grid-column: 1 / -1;
             }
 
-            /* Remove sticky behavior for sidebar on mobile */
             .sidebar {
                 position: static;
                 top: auto;
@@ -142,57 +153,67 @@
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to My World</h1>
-        <p>A place to learn a little about me.</p>
-    </header>
-
-    <div class="container">
-
-        <aside class="sidebar">
-            <h2>👤 Quick Facts</h2>
-
-            <section>
-                <h3>My Nickname:</h3>
-                <p>The name my friends usually call me is: **[Your Nickname Here]**</p>
-            </section>
-
-            <hr style="margin: 15px 0; border-color: #eee;">
-
-            <section>
-                <h3>My Dream in Life:</h3>
-                <p>My ultimate goal is to **[Your Dream Here, e.g., travel the world, become a lead software engineer, open a small cafe]**.</p>
-                <p>I believe that **[Brief explanation of your dream's importance]**.</p>
-            </section>
-        </aside>
-
-        <main>
-            
-            <section id="about" class="card">
-                <h2>📝 About Me</h2>
-                
-                <img src="placeholder-profile.jpg" alt="A profile picture or highlight image related to you." class="highlight-image">
-                
-                <p>Hello! I'm [Your Name], and I'm passionate about [Your main interests/profession]. I currently live in [Your Location] and spend my days [What you currently do].</p>
-                <p>I find joy in continuous learning and tackling new challenges, especially when it involves [A specific area of interest].</p>
-            </section>
-
-            <section id="hobbies" class="card">
-                <h2>🕹️ Hobbies & Interests</h2>
-                
-                <img src="placeholder-hobby.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
-
-                <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
-                <ul>
-                    <li>**Hobby 1:** [Detail about your first hobby].</li>
-                    <li>**Hobby 2:** [Detail about your second hobby].</li>
-                    <li>**Hobby 3:** [Detail about your third hobby].</li>
-                </ul>
-                <p>I find these activities help me relax and inspire new ideas.</p>
-            </section>
-            
-        </main>
+    <div id="video-bg">
+        <video autoplay muted loop id="myVideo">
+            <source src="media/my-background-video.mp4" type="video/mp4"> 
+            Your browser does not support HTML5 video.
+        </video>
     </div>
 
-</body>
+    <div id="content-wrap"> 
+
+        <header>
+            <h1>Welcome to My World</h1>
+            <p>A place to learn a little about me.</p>
+        </header>
+
+        <div class="container">
+
+            <aside class="sidebar">
+                <h2>👤 Quick Facts</h2>
+
+                <section>
+                    <h3>My Nickname:</h3>
+                    <p>The name my friends usually call me is: **[Your Nickname Here]**</p>
+                </section>
+
+                <hr style="margin: 15px 0; border-color: #eee;">
+
+                <section>
+                    <h3>My Dream in Life:</h3>
+                    <p>My ultimate goal is to **[Your Dream Here, e.g., travel the world, become a lead software engineer, open a small cafe]**.</p>
+                    <p>I believe that **[Brief explanation of your dream's importance]**.</p>
+                </section>
+            </aside>
+
+            <main>
+                
+                <section id="about" class="card">
+                    <h2>📝 About Me</h2>
+                    
+                    <img src="placeholder-profile.jpg" alt="A profile picture or highlight image related to you." class="highlight-image">
+                    
+                    <p>Hello! I'm [Your Name], and I'm passionate about [Your main interests/profession]. I currently live in [Your Location] and spend my days [What you currently do].</p>
+                    <p>I find joy in continuous learning and tackling new challenges, especially when it involves [A specific area of interest].</p>
+                </section>
+
+                <section id="hobbies" class="card">
+                    <h2>🕹️ Hobbies & Interests</h2>
+                    
+                    <img src="placeholder-hobby.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
+
+                    <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
+                    <ul>
+                        <li>**Hobby 1:** [Detail about your first hobby].</li>
+                        <li>**Hobby 2:** [Detail about your second hobby].</li>
+                        <li>**Hobby 3:** [Detail about your third hobby].</li>
+                    </ul>
+                    <p>I find these activities help me relax and inspire new ideas.</p>
+                </section>
+                
+            </main>
+        </div>
+
+    </div> 
+    </body>
 </html>
