@@ -7,11 +7,11 @@
     <style>
         /* --- 1. Basic Reset and Global Styles --- */
         :root {
-            --primary-color: #d4a373; /* Beige for links/accents/borders */
-            --secondary-color: #faedcd; /* Light beige for headers */
-            --text-color: #fefae0; /* White for general text */
-            --card-background: #606c38; /* Dark brown for card backgrounds */
-            --shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow */
+            --primary-color: #d4a373; 
+            --secondary-color: #faedcd; 
+            --text-color: #fefae0; 
+            --card-background: #606c38; 
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
         }
 
         * {
@@ -58,9 +58,11 @@
 
         #card-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two equal columns for profile/about */
+            /* Two equal columns for profile/about */
+            grid-template-columns: 1fr 1fr; 
             gap: 20px; 
-            align-items: stretch; /* Ensures items in the same row are equal height */
+            /* Ensures About Me card matches the height of the Profile Card */
+            align-items: stretch; 
         }
 
         header {
@@ -119,9 +121,9 @@
             padding: 0; 
             margin: 0; 
             overflow: hidden; 
-            /* Removed fixed height or min-height here, letting the image-container define it */
+            height: auto; 
             
-            display: flex; /* Keep for aligning image-container inside */
+            display: flex; 
             align-items: center; 
             justify-content: center; 
             flex-direction: column; 
@@ -133,15 +135,14 @@
             grid-row: 1;
         }
 
-        /* 🔥 FIX: Image container with aspect ratio */
+        /* 🔥 FIX: Image container uses aspect ratio for correct height */
         .profile-card .image-container {
             width: 100%;
-            position: relative; /* For absolute positioning of the img */
-            padding-top: 133%; /* 3:4 aspect ratio (height / width * 100). Adjust if your image is different. 
-                                  For a 1:1 square, use 100%. For 4:3 landscape, use 75%. 
-                                  Your image looks tall portrait, roughly 3:4, so 4/3 * 100 = 133%. */
-            border-radius: 8px; /* Apply border radius to the container */
-            overflow: hidden; /* Hide any overflow if image doesn't perfectly fit */
+            position: relative; 
+            /* Aspect ratio for a portrait image (e.g., 3:4 or 4:5). 133% is 3:4. */
+            padding-top: 133%; 
+            border-radius: 8px; 
+            overflow: hidden; 
         }
         
         #about {
@@ -151,8 +152,12 @@
 
         /* --- HOBBIES SPACING & LAYOUT --- */
         #hobbies {
-            grid-column: 1 / 2; /* Width matches profile pic container */
+            /* 🔥 Width matches profile pic container */
+            grid-column: 1 / 2; 
+            /* 🔥 Position on the next row */
             grid-row: 2; 
+            
+            /* 🔥 Requested 20px space between the row above and this container */
             margin-top: 20px; 
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
@@ -189,16 +194,15 @@
             display: block;
         }
 
-        /* 🔥 Profile image to fill its new aspect-ratio-maintained container */
+        /* 🔥 Image fills the aspect-ratio container */
         .profile-card img {
-            position: absolute; /* Take out of flow */
+            position: absolute; 
             top: 0;
             left: 0;
             width: 100%;
             height: 100%; 
-            object-fit: cover; /* Ensures image covers the container */
+            object-fit: cover; 
             display: block;
-            /* Border radius now applied to .image-container, not directly to img */
             margin: 0;
         }
 
@@ -243,7 +247,7 @@
             }
             
             #card-grid {
-                grid-template-columns: 1fr; /* All stack on mobile */
+                grid-template-columns: 1fr; 
             }
             .profile-card, #about, #hobbies {
                 grid-column: 1 / -1; 
@@ -251,7 +255,7 @@
                 margin-top: 20px; 
             }
             .profile-card .image-container {
-                padding-top: 133%; /* Maintain aspect ratio on mobile too */
+                padding-top: 133%; 
             }
 
 
