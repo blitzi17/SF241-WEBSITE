@@ -97,36 +97,32 @@
             border-radius: 8px;
             box-shadow: var(--shadow);
             height: fit-content;
-            
-            /* 🔥 FIX 3: Quick Facts Sidebar made static */
             position: static; 
             top: auto;
-            
             transition: all 0.3s ease;
         }
 
         /* CARD STYLES */
         .card {
             background-color: var(--card-background);
-            
-            /* 🔥 FIX 2: Center Text Alignment for all cards */
             text-align: center;
-            
-            padding: 30px;
+            padding: 30px; /* Default padding for other cards */
             border-radius: 8px;
             box-shadow: var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        /* --- PROFILE CARD STYLES (Image 3/4 Height Fix) --- */
+        /* --- PROFILE CARD STYLES (Image fills entire card) --- */
         .profile-card {
-            padding: 0;
-            overflow: hidden;
+            padding: 0; /* Remove all padding so image fills to edges */
+            overflow: hidden; /* Ensures border radius applies correctly */
             
-            /* Sets card as flex container for proportional height */
-            min-height: 400px; 
-            display: flex;
-            flex-direction: column;
+            /* Set a desired height for the profile card itself */
+            height: 400px; /* You can adjust this height as needed for the overall card */
+            
+            display: flex; /* Make it a flex container */
+            align-items: center; /* Center image vertically if needed */
+            justify-content: center; /* Center image horizontally if needed */
         }
 
         .card:hover {
@@ -151,26 +147,16 @@
             display: block;
         }
 
-        /* 🔥 FIX 1: Image filling 3/4 of the profile card's height */
+        /* 🔥 FIX: Image fills 100% of the profile card's height now */
         .profile-card img {
             width: 100%;
-            height: 75%; /* Takes 75% of the profile-card's height */
-            object-fit: cover; 
+            height: 100%; /* Image takes 100% of the profile-card's height */
+            object-fit: cover;
             display: block;
-            border-radius: 8px 8px 0 0; 
+            border-radius: 8px; /* Apply border radius to all corners of the image */
         }
 
-        /* Style for the profile card content (The remaining 25%) */
-        .profile-card .content {
-            padding: 15px 20px;
-            flex-grow: 1; /* Allows content to fill the rest of the available height */
-            
-            /* Vertically and Horizontally center content */
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            flex-direction: column; 
-        }
+        /* Removed .profile-card .content styles as that div is gone */
 
         /* --- QUICK FACTS HOVER FIX --- */
         .sidebar section {
@@ -178,11 +164,9 @@
             opacity: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-in-out, opacity 0.3s;
-            /* Revert text alignment for sidebar content to left for readability */
             text-align: left; 
         }
 
-        /* Desktop Hover: Show details when hovering over the sidebar */
         .sidebar:hover section {
             max-height: 300px;
             opacity: 1;
@@ -202,8 +186,6 @@
             .sidebar {
                 position: static;
                 top: auto;
-                
-                /* Mobile - Always show Quick Facts content on small screens */
                 max-height: none !important;
                 opacity: 1 !important;
             }
@@ -259,9 +241,6 @@
                     <div class="card profile-card">
                         <div class="image-container">
                             <img src="media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg" alt="Image of me">
-                        </div>
-                        <div class="content">
-                            <h3>My Profile</h3>
                         </div>
                     </div>
 
