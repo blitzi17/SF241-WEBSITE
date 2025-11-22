@@ -65,12 +65,11 @@
             margin: 0 auto;
             padding: 20px;
             display: grid;
-            /* Changed to 1fr for sidebar and 3fr for main to make room for 4 cards */
-            grid-template-columns: 1fr 3fr; 
+            grid-template-columns: 1fr 3fr;
             gap: 30px;
             padding-top: 50px;
         }
-        
+
         /* New: Grid for the cards inside the main section */
         #card-grid {
             display: grid;
@@ -89,11 +88,9 @@
             top: 0;
             z-index: 10;
         }
-        
-        /* Main now holds the grid of cards */
+
         main {
             grid-column: 2 / 3;
-            /* Removed flex-direction: column to allow card-grid to manage layout */
             gap: 20px;
         }
 
@@ -104,26 +101,31 @@
             border-radius: 8px;
             box-shadow: var(--shadow);
             height: fit-content;
-            position: sticky;
-            top: 100px;
             
-            /* ADDED: Initial state for the hidden content in sidebar */
+            /* 🔥 FIX 4: Quick Facts Sidebar made static */
+            position: static; 
+            top: auto;
+            
             transition: all 0.3s ease;
         }
 
         /* CARD STYLES */
         .card {
             background-color: var(--card-background);
+            
+            /* 🔥 FIX 3: Center Text Alignment for all cards */
+            text-align: center;
+            
             padding: 30px;
             border-radius: 8px;
             box-shadow: var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         /* Specifically style the profile card to remove padding for the image */
         .profile-card {
-            padding: 0; 
-            overflow: hidden; /* Ensures the border radius works with the image */
+            padding: 0;
+            overflow: hidden;
         }
 
         .card:hover {
@@ -146,22 +148,22 @@
             margin-bottom: 15px;
             display: block;
         }
-        
-        /* 🔥 FIX 1: Image filling the box */
-        .card img {
+
+        /* 🔥 FIX 2: Image filling the box (Ensure object-fit: cover is here) */
+        .profile-card img {
             width: 100%;
             height: 200px;
-            object-fit: cover; /* Ensures image covers the area completely */
+            object-fit: cover; 
             display: block;
-            border-radius: 8px 8px 0 0;
+            border-radius: 8px 8px 0 0; 
         }
-        
+
         /* Style for the profile card content */
         .profile-card .content {
             padding: 15px 20px;
         }
 
-        /* --- 4. QUICK FACTS HOVER FIX --- */
+        /* --- 4. QUICK FACTS HOVER FIX (Still included for desktop interaction) --- */
 
         /* Content is initially hidden (or styled minimally) */
         .sidebar section {
@@ -169,6 +171,8 @@
             opacity: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-in-out, opacity 0.3s;
+            /* 🔥 Revert text alignment for sidebar content to left for readability */
+            text-align: left; 
         }
 
         /* Desktop Hover: Show details when hovering over the sidebar */
@@ -192,14 +196,14 @@
                 position: static;
                 top: auto;
                 
-                /* 🔥 FIX 2: Mobile - Always show Quick Facts content on small screens */
+                /* Mobile - Always show Quick Facts content on small screens */
                 max-height: none !important;
                 opacity: 1 !important;
             }
-            
+
             .sidebar section {
-                max-height: none; /* Override desktop max-height */
-                opacity: 1;       /* Always show the content */
+                max-height: none;
+                opacity: 1;
                 padding: 10px 0;
                 border-top: 1px solid #f0f0f0;
                 margin-top: 10px;
@@ -230,7 +234,7 @@
 
                 <section>
                     <h3>My Nickname:</h3>
-                    <p>The name my friends usually call me is: Karol </p>
+                    <p>The name my friends usually call me is: **[Your Nickname Here]**</p>
                 </section>
 
                 <hr style="margin: 15px 0; border-color: #eee;">
@@ -253,7 +257,7 @@
                             <h3>My Profile</h3>
                         </div>
                     </div>
-                    
+
                     <section id="about" class="card">
                         <h2>📝 About Me</h2>
                         <img src="placeholder-profile.jpg" alt="A profile picture or highlight image related to you." class="highlight-image">
