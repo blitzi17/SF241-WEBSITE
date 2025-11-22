@@ -58,8 +58,7 @@
 
         #card-grid {
             display: grid;
-            /* Explicitly define 2 columns here for precision on larger screens */
-            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            grid-template-columns: 1fr 1fr; /* Two equal columns for profile/about */
             gap: 20px; 
             align-items: stretch; /* Ensures items in the same row are equal height */
         }
@@ -120,11 +119,9 @@
             padding: 0; 
             margin: 0; 
             overflow: hidden; 
-            height: 100%; /* Take full height of grid cell */
-            /* min-height ensures a baseline, but the image will largely dictate height */
-            min-height: 400px; 
+            /* Removed fixed height or min-height here, letting the image-container define it */
             
-            display: flex; 
+            display: flex; /* Keep for aligning image-container inside */
             align-items: center; 
             justify-content: center; 
             flex-direction: column; 
@@ -132,24 +129,30 @@
             border-radius: 8px; 
             flex-shrink: 0; 
             
-            /* Position in the first column, first row */
             grid-column: 1 / 2; 
             grid-row: 1;
         }
+
+        /* 🔥 FIX: Image container with aspect ratio */
+        .profile-card .image-container {
+            width: 100%;
+            position: relative; /* For absolute positioning of the img */
+            padding-top: 133%; /* 3:4 aspect ratio (height / width * 100). Adjust if your image is different. 
+                                  For a 1:1 square, use 100%. For 4:3 landscape, use 75%. 
+                                  Your image looks tall portrait, roughly 3:4, so 4/3 * 100 = 133%. */
+            border-radius: 8px; /* Apply border radius to the container */
+            overflow: hidden; /* Hide any overflow if image doesn't perfectly fit */
+        }
         
         #about {
-            /* Position in the second column, first row, making it align with profile card */
             grid-column: 2 / 3; 
             grid-row: 1;
         }
 
         /* --- HOBBIES SPACING & LAYOUT --- */
         #hobbies {
-            /* Now start on the second row, but crucially, span only the first column */
-            grid-column: 1 / 2; /* 🔥 FIX: Make width match profile pic container */
-            grid-row: 2; /* Position in the second row */
-            
-            /* Add desired space between the first row (Profile/About) and this card (Hobbies) */
+            grid-column: 1 / 2; /* Width matches profile pic container */
+            grid-row: 2; 
             margin-top: 20px; 
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
@@ -186,13 +189,16 @@
             display: block;
         }
 
-        /* 🔥 Profile image to fill container completely */
+        /* 🔥 Profile image to fill its new aspect-ratio-maintained container */
         .profile-card img {
+            position: absolute; /* Take out of flow */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%; 
-            object-fit: cover; /* Ensures image covers the container, cropping if needed */
+            object-fit: cover; /* Ensures image covers the container */
             display: block;
-            border-radius: 8px;
+            /* Border radius now applied to .image-container, not directly to img */
             margin: 0;
         }
 
@@ -236,15 +242,18 @@
                 grid-column: 1 / -1;
             }
             
-            /* Reset grid layout for stacking on mobile */
             #card-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* All stack on mobile */
             }
             .profile-card, #about, #hobbies {
-                grid-column: 1 / -1; /* All span full width */
-                grid-row: auto; /* Allow auto stacking */
+                grid-column: 1 / -1; 
+                grid-row: auto; 
                 margin-top: 20px; 
             }
+            .profile-card .image-container {
+                padding-top: 133%; /* Maintain aspect ratio on mobile too */
+            }
+
 
             .sidebar {
                 position: static;
