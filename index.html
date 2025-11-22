@@ -10,7 +10,7 @@
             --primary-color: #007bff;
             --secondary-color: #28a745;
             --text-color: #333;
-            --card-background: #e6d7c8; /* Changed to a light brown */
+            --card-background: #e6d7c8; /* Light brown */
             --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -28,27 +28,17 @@
             min-height: 100vh;
         }
 
-        /* --- 2. VIDEO BACKGROUND STYLES --- */
-        #video-bg {
+        /* --- 2. GIF BACKGROUND STYLES --- */
+        /* Replaced #video-bg and #myVideo with styles for the new <img> tag */
+        #gif-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: -2;
-        }
-
-        #myVideo {
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
+            /* Ensures the GIF covers the entire screen */
+            object-fit: cover; 
+            z-index: -2; 
         }
 
         #content-wrap {
@@ -123,12 +113,11 @@
             justify-content: space-between;
         }
 
-        /* --- PROFILE CARD STYLES (Image fills entire card) --- */
         .profile-card {
             padding: 0; 
             overflow: hidden; 
-            min-height: 200px; /* Ensures the card has a base height */
-            height: auto; /* Allows flexbox to manage height */
+            min-height: 200px; 
+            height: auto; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -145,9 +134,9 @@
             border-bottom: 2px solid var(--secondary-color);
             padding-bottom: 10px;
             margin-bottom: 20px;
-            position: relative; /* Needed for arrow positioning */
-            display: inline-block; /* Adjusts width to content for arrow */
-            padding-right: 30px; /* Space for the arrow */
+            position: relative; 
+            display: inline-block; 
+            padding-right: 30px; 
         }
         h3 {
             color: var(--text-color);
@@ -168,18 +157,16 @@
 
         .profile-card img {
             width: 100%;
-            height: 100%; 
+            height: 100%;
             object-fit: cover;
             display: block;
             border-radius: 8px;
-            /* Adjust margins here to control internal spacing within the card if needed */
-            margin: 0; /* Remove any default image margins */
+            margin: 0; 
         }
 
-        /* --- QUICK FACTS HOVER FIX + ARROW --- */
-        /* Arrow icon for Quick Facts */
+        /* --- QUICK FACTS HOVER FIX --- */
         .sidebar h2::after {
-            content: '▼'; /* Down arrow character */
+            content: '▼'; 
             position: absolute;
             right: 0;
             top: 50%;
@@ -188,7 +175,6 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        /* Rotate arrow on hover */
         .sidebar:hover h2::after {
             transform: translateY(-50%) rotate(180deg);
         }
@@ -236,13 +222,7 @@
 </head>
 <body>
 
-    <div id="video-bg">
-        <video autoplay muted loop id="myVideo">
-            <source src="media/9968977-uhd_3840_2160_25fps.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
-    </div>
-
+    <img src="media/Доброе утро! Осень_  Cinemagraph.gif" id="gif-bg" alt="">
     <div id="content-wrap">
 
         <header>
@@ -274,7 +254,7 @@
 
                     <div class="card profile-card">
                         <div class="image-container">
-                            <img src="media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg" alt="Image of me">
+                            <img src="media/433cc965-3feb-497c-86b7-2d17a5b8da8e.jpg" alt="">
                         </div>
                     </div>
 
@@ -287,7 +267,7 @@
 
                     <section id="hobbies" class="card">
                         <h2>🕹️ Hobbies & Interests</h2>
-                        <img src="placeholder-hobby.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
+                        <img src="media/09c40290-36c3-4c1a-9b96-ee1e8a727551.jpg" alt="" class="highlight-image">
                         <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
                         <ul>
                             <li>**Hobby 1:** Flower making and arrangement.</li>
