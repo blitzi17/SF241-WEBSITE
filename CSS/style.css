@@ -1,0 +1,262 @@
+/* --- 1. Basic Reset and Global Styles --- */
+:root {
+    --primary-color: #d4a373; 
+    --secondary-color: #faedcd; 
+    --text-color: #fefae0; 
+    --card-background: #606c38; 
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: transparent;
+    min-height: 100vh;
+}
+
+/* --- 2. GIF BACKGROUND STYLES --- */
+#gif-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -2; 
+}
+
+#content-wrap {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+/* --- 3. Layout and Content Styles --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 30px;
+    padding-top: 50px;
+}
+
+#card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+    align-items: stretch; 
+}
+
+header {
+    background-color: transparent;
+    color: var(--text-color); 
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: none;
+    position: static; 
+    top: auto;
+    z-index: 10;
+    padding-bottom: 50px;
+}
+
+header h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+header p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+main {
+    grid-column: 2 / 3;
+    gap: 20px;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    height: fit-content;
+    position: static; 
+    top: auto;
+    transition: all 0.3s ease;
+}
+
+.card {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    text-align: center;
+    padding: 30px; 
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-height: 200px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* --- PROFILE CARD STYLES --- */
+.profile-card {
+    padding: 0; 
+    margin: 0; 
+    overflow: hidden; 
+    height: auto; 
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column; 
+    background-color: transparent; 
+    border-radius: 8px; 
+    flex-shrink: 0; 
+    
+    grid-column: 1 / 2; 
+    grid-row: 1;
+}
+
+/* Image container uses aspect ratio for correct height */
+.profile-card .image-container {
+    width: 100%;
+    position: relative; 
+    padding-top: 133%; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+#about {
+    grid-column: 2 / 3; 
+    grid-row: 1;
+}
+
+/* --- HOBBIES SPACING & LAYOUT --- */
+#hobbies {
+    grid-column: 1 / 2; 
+    grid-row: 2; 
+    margin-top: 20px; 
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative; 
+    display: inline-block; 
+    padding-right: 30px; 
+}
+h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+p {
+    margin-bottom: 10px;
+}
+
+.highlight-image {
+    width: 100%;
+    height: auto; 
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Image fills the aspect-ratio container edge-to-edge */
+.profile-card img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
+    margin: 0;
+}
+
+/* --- QUICK FACTS HOVER FIX --- */
+.sidebar h2::after {
+    content: '▼'; 
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    transition: transform 0.3s ease-in-out;
+    color: var(--secondary-color);
+}
+
+.sidebar:hover h2::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.sidebar section {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s;
+    text-align: left; 
+}
+
+.sidebar:hover section {
+    max-height: 300px;
+    opacity: 1;
+}
+
+/* --- 5. Responsiveness (Media Queries) --- */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    main, .sidebar {
+        grid-column: 1 / -1;
+    }
+    
+    #card-grid {
+        grid-template-columns: 1fr; 
+    }
+    .profile-card, #about, #hobbies {
+        grid-column: 1 / -1; 
+        grid-row: auto; 
+        margin-top: 20px; 
+    }
+    .profile-card .image-container {
+        padding-top: 133%; 
+    }
+
+
+    .sidebar {
+        position: static;
+        top: auto;
+        max-height: none !important;
+        opacity: 1 !important;
+    }
+
+    .sidebar section {
+        max-height: none;
+        opacity: 1;
+        padding: 10px 0;
+        border-top: 1px solid var(--shadow);
+        margin-top: 10px;
+    }
+}
