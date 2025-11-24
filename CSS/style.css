@@ -107,32 +107,35 @@ main {
     justify-content: space-between;
 }
 
-/* --- PROFILE CARD STYLES --- */
+/* --- PROFILE CARD STYLES (Adjusted for image filling) --- */
 .profile-card {
     padding: 0; 
     margin: 0; 
     overflow: hidden; 
-    height: auto; 
+    /* height: auto;  -- Removed due to previous fix attempt */
     
     display: flex; 
     align-items: center; 
     justify-content: center; 
     flex-direction: column; 
-    background-color: transparent; 
+    /* background-color: transparent; -- Removed/Set below */
+    background-color: var(--card-background); /* Added/Confirmed this to fill container */
     border-radius: 8px; 
     flex-shrink: 0; 
     
     grid-column: 1 / 2; 
     grid-row: 1;
+    height: 100%; /* Ensure the card takes full height */
 }
 
-/* Image container uses aspect ratio for correct height */
+/* Image container now relies on height: 100% */
 .profile-card .image-container {
     width: 100%;
     position: relative; 
-    padding-top: 133%; 
+    /* padding-top: 133%; -- Removed for better fill */
     border-radius: 8px; 
     overflow: hidden; 
+    height: 100%; /* Container takes full height of the card */
 }
 
 #about {
@@ -240,9 +243,10 @@ p {
         grid-row: auto; 
         margin-top: 20px; 
     }
-    .profile-card .image-container {
+    /* Removed padding-top here as well for consistency */
+    /* .profile-card .image-container {
         padding-top: 133%; 
-    }
+    } */
 
 
     .sidebar {
