@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <img src="/SF241-WEBSITE/media/bgtoh.gif" id="gif-bg" alt="Animated Background">
+    <img src="/SF241-WEBSITE/media/autumn-bg.gif" id="gif-bg" alt="Animated Background">
     <div id="content-wrap">
 
         <header>
@@ -16,9 +16,9 @@
             <p>A place to learn a little about me.</p>
         </header>
 
-        <div class="container">
+        <div id="main-flex-content"> 
 
-            <aside class="sidebar">
+            <div class="card sidebar">
                 <h2>👤 Quick Facts</h2>
 
                 <section>
@@ -31,40 +31,52 @@
                     <p>My ultimate goal is to have a life where abundance and happiness can be seen.</p>
                     <p>I believe that life is simple, money answer all thats why i want to have enough money to fulfill my dreams.</p>
                 </section>
-            </aside>
+            </div>
 
-            <main>
-                <div id="card-grid">
-
-                    <div class="card profile-card">
-                        <div class="image-container">
-                            <img src="/SF241-WEBSITE/media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg" alt="Image of me">
-                        </div>
-                    </div>
-
-                    <section id="about" class="card">
-                        <h2>📝 About Me</h2>
-                        <img src="/SF241-WEBSITE/media/download (63).jpg" alt="A profile picture or highlight image related to you." class="highlight-image">
-                        <p>Hello! I'm Karol Joy M. Ronquillo, and I'm passionate about my creative skills like creating flowers with different material, sculpting and flower arrangement. I currently live in Makati City and spend my days understanding and fixing my depression.</p>
-                        <p> I'm currently studying BS Computer Science specialized in Cybersecurity and Forensic
-                        <p>I find joy in continuous learning and tackling new challenges, especially when it involves creative things.</p>
-                    </section>
-
-                    <section id="hobbies" class="card">
-                        <h2>🕹️ Hobbies & Interests</h2>
-                        <img src="/SF241-WEBSITE/media/09c40290-36c3-4c1a-9b96-ee1e8a727551.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
-                        <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
-                        <ul>
-                            <li>Hobby 1: Flower making and arrangement.</li>
-                            <li>Hobby 2: Event Design.</li>
-                            <li>Hobby 3:Sculpting and Installion Art.</li>
-                        </ul>
-                        <p>I find these activities help me relax and inspire new ideas.</p>
-                    </section>
-
+            <div class="card profile-card">
+                <div class="image-container">
+                    <img src="/SF241-WEBSITE/media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg" alt="Image of me">
                 </div>
-            </main>
+            </div>
+
+            <section id="about" class="card">
+                <div class="about-text-content">
+                    <h2>📝 About Me</h2>
+                    <p>Hello! I'm Karol Joy M. Ronquillo, and I'm passionate about my creative skills like creating flowers with different material, sculpting and flower arrangement. I currently live in Makati City and spend my days understanding and fixing my depression.</p>
+                    <p> I'm currently studying BS Computer Science specialized in Cybersecurity and Forensic </p>
+                    <p>I find joy in continuous learning and tackling new challenges, especially when it involves creative things.</p>
+                </div>
+                
+                <div class="about-image-grid">
+                    <img src="/SF241-WEBSITE/media/download (63).jpg" alt="A profile picture or highlight image related to you." class="highlight-image">
+                    <img src="/SF241-WEBSITE/media/placeholder-1.jpg" alt="Placeholder image 1">
+                    <img src="/SF241-WEBSITE/media/placeholder-2.jpg" alt="Placeholder image 2">
+                    <img src="/SF241-WEBSITE/media/placeholder-3.jpg" alt="Placeholder image 3">
+                </div>
+            </section>
+
+            <section id="hobbies" class="card">
+                <h2>🕹️ Hobbies & Interests</h2>
+                <img src="/SF241-WEBSITE/media/09c40290-36c3-4c1a-9b96-ee1e8a727551.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
+                <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
+                <ul>
+                    <li>Hobby 1: Flower making and arrangement.</li>
+                    <li>Hobby 2: Event Design.</li>
+                    <li>Hobby 3:Sculpting and Installion Art.</li>
+                </ul>
+                <p>I find these activities help me relax and inspire new ideas.</p>
+            </section>
+
+            <div id="concept-card" class="card">
+                <h2>📝 Flexbox Design Instructions</h2>
+                <p>The **four-column layout** above uses Flexbox to organize the main content. The "About Me" card internally uses Flexbox and Grid to showcase the conceptual design for the club/travel site:</p>
+                <ul>
+                    <li>**Left Side:** Contains text content (using `flex: 1`).</li>
+                    <li>**Right Side:** Contains a grid of 4 picture tiles (using `flex: 1`).</li>
+                </ul>
+                <p>This instruction container is set to span the full width (100%) of the bottom row using `flex: 1 1 100%`.</p>
+            </div>
         </div>
-    </div>
+        </div>
 </body>
 </html>
