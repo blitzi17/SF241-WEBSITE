@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Awesome Main Page - Introduction</title>
-    <link rel="stylesheet" href="../CSS/style.css"> 
+    <link rel="stylesheet" href="/SF241-WEBSITE/CSS/style.css"> 
 </head>
 <body>
 
@@ -16,9 +16,9 @@
             <p>A place to learn a little about me.</p>
         </header>
 
-        <div id="main-flex-content"> 
+        <div class="container"> 
 
-            <div class="card sidebar">
+            <aside class="sidebar">
                 <h2>👤 Quick Facts</h2>
 
                 <section>
@@ -31,54 +31,39 @@
                     <p>My ultimate goal is to have a life where abundance and happiness can be seen.</p>
                     <p>I believe that life is simple, money answer all thats why i want to have enough money to fulfill my dreams.</p>
                 </section>
-            </div>
+            </aside>
 
-            <div class="card profile-card">
-                <div class="image-container">
-                    <img src="/SF241-WEBSITE/media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg" alt="Image of me">
-                </div>
-            </div>
+            <main>
+                <div id="card-grid">
 
-            <section id="about" class="card">
-                
-                <div class="about-content-wrapper">
-                    
-                    <div class="about-details">
-                        <h2>📝 My Creative Projects</h2>
-                        
-                        <div class="project-info">
-                            <h3>Current Project: Flower Arrangement</h3>
-                            <p>I focus on creating stunning floral designs for events and personal gifts. This involves selecting materials, sculpting, and perfecting the final arrangement.</p>
-                            <p>This area will display detailed text that changes with the image gallery, like the "Club Design" name and description in the video.</p>
+                    <div class="card profile-card">
+                        <div class="image-container">
+                            <img src="/SF241-WEBSITE/media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg" alt="Image of me">
                         </div>
                     </div>
-                    
-                    <div class="about-gallery">
-                        <div class="gallery-inner">
-                            <img src="/SF241-WEBSITE/media/download (63).jpg" alt="Flower making" class="gallery-image active">
-                            <img src="/SF241-WEBSITE/media/09c40290-36c3-4c1a-9b96-ee1e8a727551.jpg" alt="Event Design" class="gallery-image">
-                            </div>
-                        
-                        <button class="nav-arrow left-arrow">❮</button>
-                        <button class="nav-arrow right-arrow">❯</button>
-                    </div>
-                    
+
+                    <section id="about" class="card">
+                        <h2>📖 About Me</h2>
+                        <h3>My Journey So Far</h3>
+                        <p>I am currently a student dedicated to my studies and aiming for a future filled with creative achievement. My passion lies in combining design with practical application.</p>
+                        <img src="/SF241-WEBSITE/media/download (63).jpg" alt="Highlight image for About Me" class="highlight-image">
+                        <p>I focus on creating stunning floral designs for events and personal gifts. This involves selecting materials, sculpting, and perfecting the final arrangement.</p>
+                    </section>
+
+                    <section id="hobbies" class="card">
+                        <h2>🕹️ Hobbies & Interests</h2>
+                        <img src="/SF241-WEBSITE/media/09c40290-36c3-4c1a-9b96-ee1e8a727551.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
+                        <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
+                        <ul>
+                            <li>Hobby 1: Flower making and arrangement.</li>
+                            <li>Hobby 2: Event Design.</li>
+                            <li>Hobby 3: Sculpting and Installion Art.</li>
+                        </ul>
+                        <p>I find these activities help me relax and inspire new ideas.</p>
+                    </section>
+
                 </div>
-                
-            </section>
-
-            <section id="hobbies" class="card">
-                <h2>🕹️ Hobbies & Interests</h2>
-                <img src="/SF241-WEBSITE/media/09c40290-36c3-4c1a-9b96-ee1e8a727551.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
-                <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
-                <ul>
-                    <li>Hobby 1: Flower making and arrangement.</li>
-                    <li>Hobby 2: Event Design.</li>
-                    <li>Hobby 3:Sculpting and Installion Art.</li>
-                </ul>
-                <p>I find these activities help me relax and inspire new ideas.</p>
-            </section>
-
+            </main>
             </div>
         </div>
 </body>
