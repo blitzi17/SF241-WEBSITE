@@ -40,8 +40,6 @@ body {
 
 /* --- 3. Layout and Content Styles (FLEXBOX IMPLEMENTATION) --- */
 
-/* REMOVED: Old .container and grid layout rules */
-
 /* *** NEW MAIN FLEX CONTAINER *** */
 #main-flex-content {
     max-width: 1400px; 
@@ -92,8 +90,8 @@ header p {
     flex: 1 1 calc(25% - 15px); 
     max-width: calc(25% - 15px);
     min-width: 200px; 
-    grid-column: auto;
-    grid-row: auto; 
+    grid-column: auto; /* REMOVED GRID */
+    grid-row: auto; /* REMOVED GRID */
     position: static;
     height: auto;
     margin-top: 0; 
@@ -134,17 +132,17 @@ header p {
     margin: 0;
 }
 
-/* --- INTERNAL ABOUT ME SLIDER/GALLERY STYLES --- */
+/* --- INTERNAL ABOUT ME SLIDER/GALLERY STYLES (REQUIRED FOR NEW DESIGN) --- */
 #about {
     padding: 0; 
     overflow: hidden; 
 }
 
 .about-content-wrapper {
-    display: flex; 
+    display: flex; /* Make the internal wrapper a flex container */
     height: 100%;
     width: 100%;
-    flex-direction: row; 
+    flex-direction: row; /* Details on left, Gallery on right */
 }
 
 /* LEFT SIDE: Project Details */
