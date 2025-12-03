@@ -82,7 +82,7 @@ header p {
     min-height: 200px; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; /* Aligns content to the top */
 }
 
 /* --- STYLES FOR ALL 4 TOP-ROW ITEMS (Quick Facts, Profile, About, Hobbies) --- */
@@ -90,8 +90,6 @@ header p {
     flex: 1 1 calc(25% - 15px); 
     max-width: calc(25% - 15px);
     min-width: 200px; 
-    grid-column: auto; /* REMOVED GRID */
-    grid-row: auto; /* REMOVED GRID */
     position: static;
     height: auto;
     margin-top: 0; 
@@ -132,79 +130,19 @@ header p {
     margin: 0;
 }
 
-/* --- INTERNAL ABOUT ME SLIDER/GALLERY STYLES (REQUIRED FOR NEW DESIGN) --- */
+/* --- ABOUT ME (SINGLE IMAGE COLLAGE) STYLES --- */
 #about {
-    padding: 0; 
-    overflow: hidden; 
+    /* Reverts back to simple vertical stacking */
+    padding: 30px; 
 }
 
-.about-content-wrapper {
-    display: flex; /* Make the internal wrapper a flex container */
-    height: 100%;
-    width: 100%;
-    flex-direction: row; /* Details on left, Gallery on right */
-}
-
-/* LEFT SIDE: Project Details */
-.about-details {
-    flex: 1; 
-    padding: 20px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-}
-.about-details h2 {
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-/* RIGHT SIDE: Image Gallery (Slider) */
-.about-gallery {
-    flex: 1;
-    position: relative; 
-    overflow: hidden; 
-}
-
-.gallery-inner {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease-in-out; 
-}
-
-.gallery-image {
-    width: 100%;
-    height: 100%;
-    flex-shrink: 0; 
-    object-fit: cover;
-    display: none; 
-}
-.gallery-image.active {
-    display: block; 
-}
-
-/* SLIDER ARROW BUTTONS */
-.nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-    font-size: 18px;
-    line-height: 1;
-    border-radius: 50%;
-}
-.left-arrow {
-    left: 10px;
-}
-.right-arrow {
-    right: 10px;
+/* --- FULL-WIDTH CONTAINER STYLES --- */
+#full-width-content-area {
+    /* forces it to take full width and wrap to a new line */
+    flex: 1 1 100%; 
+    max-width: 100%;
+    margin-top: 20px;
+    min-height: 250px;
 }
 
 /* --- GENERAL CARD STYLES --- */
@@ -230,7 +168,8 @@ p {
     margin-bottom: 10px;
 }
 
-.highlight-image {
+/* General image styling for images inside standard cards (like Hobbies or About Me) */
+.highlight-image, #about .image-container img {
     width: 100%;
     height: auto; 
     object-fit: cover;
@@ -274,17 +213,8 @@ p {
     }
 
     /* All cards should take full width on small screens */
-    .sidebar, .profile-card, #about, #hobbies {
+    .sidebar, .profile-card, #about, #hobbies, #full-width-content-area {
         flex: 1 1 100%; 
-        max-width: 100%;
-    }
-    
-    /* Ensure About Me sections stack on mobile */
-    .about-content-wrapper {
-        flex-direction: column; 
-    }
-    .about-details {
-        flex: 1 1 100%;
         max-width: 100%;
     }
     
