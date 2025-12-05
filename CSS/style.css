@@ -284,6 +284,15 @@ p {
         flex: 1 1 100%;
         max-width: 100%;
     }
+    #full-width-content-area {
+        min-height: 150px; /* Reduce height on mobile */
+    }
+    #full-width-content-area h2 {
+        font-size: 1.5em; /* Shrink title size */
+    }
+    #full-width-content-area p {
+        padding: 0 10px; /* Add padding to keep text off edges */
+    }
     
     /* Old grid media queries are obsolete */
     /* main, .sidebar { grid-column: 1 / -1; } */
