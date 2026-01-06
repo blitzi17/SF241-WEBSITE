@@ -196,6 +196,38 @@ section.reveal {
     border-radius: 5px;
 }
 
+.rating {
+    margin-bottom: 1rem;
+}
+
+.rating label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.stars {
+    display: flex;
+    direction: rtl; /* Reverse for star selection */
+}
+
+.stars input {
+    display: none;
+}
+
+.stars label {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label {
+    color: var(--neon-cyan);
+}
+
 .guestbook button {
     padding: 0.5rem;
     background: var(--neon-cyan);
@@ -219,6 +251,39 @@ section.reveal {
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 5px;
+}
+
+.log-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--neon-purple);
+    border: none;
+    color: var(--text-primary);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.log-button:hover {
+    background: var(--neon-magenta);
+}
+
+.log {
+    margin-top: 1rem;
+    background: var(--glass-bg);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.log ul {
+    list-style: none;
+    padding: 0;
+}
+
+.log li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border);
 }
 
 /* Footer */
@@ -267,5 +332,9 @@ footer a {
 
     nav ul li {
         margin: 1rem 0;
+    }
+
+    .stars label {
+        font-size: 1.5rem;
     }
 }
