@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IM' Karol - Creative Digital Innovation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/style.css">
-</head>
 <body>
     <div id="app">
         <header>
-            <nav>
+            <nav class="nav-container">
                 <div class="logo">IM' <span class="highlight">Karol</span></div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </header>
@@ -24,14 +15,14 @@
             <div class="hero-content">
                 <p class="accent-text">🚀 We're constantly pushing the boundaries</p>
                 <h1>Creative Digital <span class="gradient-text">Innovation</span></h1>
-                <p class="hero-description">I'm a passionate digital creator specializing in AI-powered design, innovative web experiences, and cutting-edge visual storytelling.</p>
+                <p class="hero-description">I transform ideas into immersive digital realities that captivate and inspire.</p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary">Discover <i class="fas fa-arrow-right"></i></button>
                     <button class="btn btn-secondary">Connect With Us</button>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="../media/hero-placeholder.jpg" alt="Innovation" class="main-img">
+            <div class="hero-image-container">
+                <img src="../media/hero-placeholder.jpg" alt="Hero" class="hero-img">
                 <div class="experience-badge">
                     <span class="years">10+ Years</span>
                     <span class="text">Digital Experience</span>
@@ -43,29 +34,8 @@
 
         <guestbook-form></guestbook-form>
 
-        <footer>
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h2>IM' <span class="highlight">Karol</span></h2>
-                    <p>Pushing the boundaries of digital creativity through AI-powered design.</p>
-                </div>
-                <div class="footer-social">
-                    <h3>Connect With Me</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Gemma Ronquillo. All rights reserved.</p>
-            </div>
-        </footer>
-    </div>
+        </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../JS/main.js"></script>
 </body>
-</html>
