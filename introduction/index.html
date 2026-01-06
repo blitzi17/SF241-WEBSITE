@@ -69,49 +69,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <script>
-        // Scroll-to-Reveal Animation
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => observer.observe(section));
-
-        // Vue.js for Gallery
-        new Vue({
-            el: '#gallery-app',
-            data: {
-                items: [
-                    { id: 1, src: 'https://via.placeholder.com/300x200?text=Project+1', title: 'Project 1', description: 'Description of project 1.' },
-                    { id: 2, src: 'https://via.placeholder.com/300x200?text=Project+2', title: 'Project 2', description: 'Description of project 2.' },
-                    { id: 3, src: 'https://via.placeholder.com/300x200?text=Project+3', title: 'Project 3', description: 'Description of project 3.' }
-                ]
-            }
-        });
-
-        // Vue.js for Guestbook
-        new Vue({
-            el: '#guestbook-app',
-            data: {
-                newMessage: { name: '', message: '' },
-                messages: []
-            },
-            methods: {
-                addMessage() {
-                    this.messages.push({
-                        id: Date.now(),
-                        name: this.newMessage.name,
-                        message: this.newMessage.message
-                    });
-                    this.newMessage = { name: '', message: '' };
-                }
-            }
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
