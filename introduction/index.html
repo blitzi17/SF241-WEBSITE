@@ -7,96 +7,96 @@
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
+
+<div id="app">
+
     <header>
         <div class="logo">My Name</div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#resources">Resources</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- ABOUT -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>About Me</h1>
-            <p>I am a passionate developer with interests in web technologies, design, and innovation. This is a brief introduction to my profile.</p>
+            <p>
+                I am a passionate developer with interests in web technologies,
+                design, and innovation.
+            </p>
         </div>
         <div class="hero-photo">
             <img src="https://via.placeholder.com/300" alt="Professional Photo">
         </div>
     </section>
 
+    <!-- PORTFOLIO -->
     <section id="portfolio" class="portfolio">
         <h2>Portfolio</h2>
-        <div id="gallery-app">
-            <div class="gallery">
-                <div class="gallery-item" v-for="item in items" :key="item.id">
-                    <img :src="item.src" :alt="item.title">
-                    <div class="gallery-details">
-                        <h3>{{ item.title }}</h3>
-                        <p>{{ item.description }}</p>
-                    </div>
-                </div>
+
+        <div class="gallery">
+            <div
+                class="gallery-item"
+                v-for="item in items"
+                :key="item.id"
+            >
+                <img :src="item.src" :alt="item.title">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
             </div>
         </div>
     </section>
 
-    <section id="interactions" class="interactions">
-        <h2>Interactions</h2>
-        <div id="guestbook-app">
-            <div class="guestbook">
-                <h3>Leave a Message</h3>
-                <form @submit.prevent="addMessage">
-                    <input v-model="newMessage.name" type="text" placeholder="Your Name" required>
-                    <div class="rating">
-                        <label>Rating (Satisfaction):</label>
-                        <div class="stars">
-                            <input type="radio" id="star5" v-model="newMessage.rating" value="5" required>
-                            <label for="star5">★</label>
-                            <input type="radio" id="star4" v-model="newMessage.rating" value="4">
-                            <label for="star4">★</label>
-                            <input type="radio" id="star3" v-model="newMessage.rating" value="3">
-                            <label for="star3">★</label>
-                            <input type="radio" id="star2" v-model="newMessage.rating" value="2">
-                            <label for="star2">★</label>
-                            <input type="radio" id="star1" v-model="newMessage.rating" value="1">
-                            <label for="star1">★</label>
-                        </div>
-                    </div>
-                    <textarea v-model="newMessage.message" placeholder="Your Message" required></textarea>
-                    <button type="submit">Submit</button>
-                </form>
-                <div class="messages">
-                    <div class="message" v-for="msg in messages" :key="msg.id">
-                        <strong>{{ msg.name }}</strong> ({{ generateStars(msg.rating) }}): {{ msg.message }}
-                    </div>
-                </div>
-                <button @click="showLog = !showLog" class="log-button">View Guestbook Log</button>
-                <div v-if="showLog" class="log">
-                    <h4>Guestbook Log</h4>
-                    <ul>
-                        <li v-for="msg in messages" :key="msg.id">
-                            <strong>Name:</strong> {{ msg.name }}<br>
-                            <strong>Rating:</strong> {{ generateStars(msg.rating) }}<br>
-                            <strong>Message:</strong> {{ msg.message }}<br>
-                            <strong>Timestamp:</strong> {{ new Date(msg.id).toLocaleString() }}
-                        </li>
-                    </ul>
-                </div>
+    <!-- GUESTBOOK -->
+    <section class="interactions">
+        <h2>Guestbook</h2>
+
+        <form @submit.prevent="addMessage" class="guestbook">
+            <input
+                v-model="newMessage.name"
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <select v-model="newMessage.rating" required>
+                <option disabled value="">Rating</option>
+                <option v-for="n in 5" :key="n" :value="n">
+                    {{ n }}
+                </option>
+            </select>
+
+            <textarea
+                v-model="newMessage.message"
+                placeholder="Your Message"
+                required
+            ></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="messages">
+            <div class="message" v-for="msg in messages" :key="msg.id">
+                <strong>{{ msg.name }}</strong>
+                ({{ generateStars(msg.rating) }})
+                <p>{{ msg.message }}</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2023 My Name. All rights reserved.</p>
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-        <a href="#">Twitter</a>
+        <p>&copy; 2023 My Name</p>
     </footer>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="../JS/main.js" defer></script>
+</div>
+
+<!-- Vue 3 -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="../JS/main.js" defer></script>
 
 </body>
 </html>
