@@ -1,63 +1,60 @@
 const { createApp } = Vue;
-
 const app = createApp({});
 
-// --- Portfolio Gallery Component ---
-// This handles the sliding project display you asked about
 app.component('portfolio-gallery', {
     data() {
         return {
-            currentImageIndex: 0,
-            // IMPORTANT: We use ../media/ because your HTML is inside the 'introduction' folder
+            currentIndex: 0,
+            showModal: false,
+            selectedImage: null,
             images: [
                 {
                     src: '../media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg',
-                    title: 'AI-Powered Brand Identity',
-                    tags: ['AI Design', 'Branding', 'Visual Identity']
+                    title: 'AI Brand Identity',
+                    shortDesc: 'Click to see technical details',
+                    longDesc: 'Used Stable Diffusion and Photoshop to create a futuristic brand concept. Focused on neon aesthetics and high-contrast lighting.'
                 },
                 {
                     src: '../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg',
-                    title: 'Futuristic UI/UX Design',
-                    tags: ['UI/UX', 'Web Design', 'Prototype']
-                },
-                {
-                    src: '../media/hero-placeholder.jpg',
-                    title: 'Digital Art & Illustration',
-                    tags: ['Digital Art', 'Creative', 'Concept']
+                    title: 'Cyber UI Design',
+                    shortDesc: 'Interactive Prototype',
+                    longDesc: 'A full-scale UI kit designed for a cyberpunk-themed dashboard. Includes custom icons and glassmorphism effects.'
                 }
             ]
         };
     },
     methods: {
-        nextImage() {
-            this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-        },
-        prevImage() {
-            this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+        openZoom(img) {
+            this.selectedImage = img;
+            this.showModal = true;
         }
     },
     template: `
-        <section class="section-container">
-            <p class="accent-text">Explore my latest projects</p>
+        <section id="portfolio" class="section-container">
             <h2>Featured <span class="gradient-text">Portfolio</span></h2>
+            
             <div class="carousel-container">
-                <button class="carousel-btn" @click="prevImage">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="carousel-slide">
-                    <img :src="images[currentImageIndex].src" :alt="images[currentImageIndex].title">
-                    <div class="slide-content">
-                        <div class="tags">
-                            <span v-for="(tag, index) in images[currentImageIndex].tags" :key="index">{{ tag }}</span>
-                        </div>
-                        <h3>{{ images[currentImageIndex].title }}</h3>
+                <div class="carousel-slide" @click="openZoom(images[currentIndex])">
+                    <img :src="images[currentIndex].src">
+                    <div class="hover-overlay">
+                        <h3>{{ images[currentIndex].title }}</h3>
+                        <p>{{ images[currentIndex].shortDesc }}</p>
+                        <span><i class="fas fa-search-plus"></i> Click to Zoom</span>
                     </div>
                 </div>
-                
-                <button class="carousel-btn" @click="nextImage">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+            </div>
+
+            <div v-if="showModal" class="modal-overlay" @click.self="showModal = false">
+                <div class="modal-content">
+                    <span class="close-btn" @click="showModal = false">&times;</span>
+                    <img :src="selectedImage.src" class="modal-img">
+                    <div class="modal-text">
+                        <h2 class="gradient-text">{{ selectedImage.title }}</h2>
+                        <hr>
+                        <p>{{ selectedImage.longDesc }}</p>
+                        <button class="btn btn-primary" @click="showModal = false">Close Details</button>
+                    </div>
+                </div>
             </div>
         </section>
     `
@@ -111,5 +108,6 @@ app.component('guestbook-form', {
         </section>
     `
 });
+
 
 app.mount('#app');
