@@ -1,10 +1,18 @@
-/* --- 1. Basic Reset and Global Styles --- */
 :root {
-    --primary-color: #d4a373; 
-    --secondary-color: #faedcd; 
-    --text-color: #fefae0; 
-    --card-background: #606c38; 
-    --shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    /* Backgrounds */
+    --bg-deep-indigo: #0f0c29; /* Darkest areas */
+    --bg-gradient-main: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    
+    /* Primary Neon Colors */
+    --neon-cyan: #00ffff;      /* Logo highlights, primary buttons */
+    --neon-magenta: #ff00ff;   /* Secondary accents, glowing borders */
+    --neon-purple: #8a2be2;    /* Gradient transitions */
+    
+    /* Text & Overlays */
+    --text-primary: #ffffff;   /* Pure white for headings */
+    --text-secondary: #e0e0e0; /* Off-white for body paragraphs */
+    --glass-bg: rgba(255, 255, 255, 0.1); /* Transparent cards */
+    --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -14,304 +22,250 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background: var(--bg-gradient-main);
+    color: var(--text-secondary);
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: transparent;
-    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* --- 2. GIF BACKGROUND STYLES --- */
-#gif-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    z-index: -2; 
-}
-
-#content-wrap {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-}
-
-/* --- 3. Layout and Content Styles (FLEXBOX IMPLEMENTATION) --- */
-
-/* REMOVED/OVERRIDDEN: The .container, #card-grid, main, and sidebar grid rules are replaced by #main-flex-content below */
-
-/* *** NEW MAIN FLEX CONTAINER *** */
-#main-flex-content {
-    max-width: 1400px; /* Wider container for four columns */
-    margin: 0 auto;
-    padding: 20px;
-    display: flex; 
-    flex-wrap: wrap; /* Allows the instruction card to wrap below */
-    gap: 20px; 
-    align-items: stretch; /* Ensures all cards in the row have equal height */
-    padding-top: 50px;
-}
-
+/* Header */
 header {
-    background-color: transparent;
-    color: var(--text-color); 
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: none;
-    position: static; 
-    top: auto;
-    z-index: 10;
-    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--bg-deep-indigo);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-header h1 {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-header p {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+.logo {
+    font-size: 1.5rem;
+    color: var(--neon-cyan);
+    font-weight: bold;
 }
 
-.card {
-    background-color: var(--card-background);
-    color: var(--text-color);
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--neon-magenta);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 2rem 2rem;
+    min-height: 100vh;
+    background: var(--bg-gradient-main);
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.hero-photo {
+    flex: 1;
     text-align: center;
-    padding: 30px; 
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+}
+
+.hero-photo img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid var(--neon-cyan);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* Sections */
+section {
+    padding: 4rem 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+section.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio, .interactions {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
-    min-height: 200px; 
+}
+
+.portfolio:hover, .interactions:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Portfolio Gallery */
+.gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.gallery-item {
+    flex: 0 0 300px;
+    margin-right: 1rem;
+    scroll-snap-align: start;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-details {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover .gallery-details {
+    transform: translateY(0);
+}
+
+/* Interactions */
+.guestbook {
+    margin-top: 2rem;
+}
+
+.guestbook form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
-/* --- STYLES FOR ALL 4 TOP-ROW ITEMS (Quick Facts, Profile, About, Hobbies) --- */
-.sidebar, .profile-card, #about, #hobbies {
-    /* Calculate flex basis for 4 items: (100% / 4) - gap adjustment */
-    flex: 1 1 calc(25% - 15px); 
-    max-width: calc(25% - 15px);
-    min-width: 200px; /* Minimum size */
-    
-    /* Ensure old grid properties are gone */
-    grid-column: auto;
-    grid-row: auto; 
-    position: static;
-    height: auto;
-    margin-top: 0; /* Remove old margin from #hobbies */
+.guestbook input, .guestbook textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    border-radius: 5px;
 }
 
-/* Ensure the sidebar/quick facts uses the new .card class */
-.sidebar {
-    background-color: var(--card-background);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+.guestbook button {
+    padding: 0.5rem;
+    background: var(--neon-cyan);
+    border: none;
+    color: var(--bg-deep-indigo);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-/* --- PROFILE CARD STYLES (Adjusted for image filling) --- */
-.profile-card {
-    padding: 0; 
-    margin: 0; 
-    overflow: hidden; 
-    background-color: var(--card-background);
-    border-radius: 8px; 
-    flex-shrink: 0; 
-    
-    height: 100%; /* Ensure the card takes full height */
+.guestbook button:hover {
+    background: var(--neon-magenta);
 }
 
-/* Image container now relies on height: 100% */
-.profile-card .image-container {
-    width: 100%;
-    position: relative; 
-    border-radius: 8px; 
-    overflow: hidden; 
-    height: 100%; /* Container takes full height of the card */
+.messages {
+    margin-top: 2rem;
 }
 
-/* Image fills the aspect-ratio container edge-to-edge */
-.profile-card img {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    object-fit: cover; 
-    display: block;
-    margin: 0;
+.message {
+    background: var(--glass-bg);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
 }
 
-/* --- ABOUT ME INTERNAL FLEXBOX STYLES (for conceptual design) --- */
-#about {
-    /* Override padding: 30px from .card */
-    padding: 0; 
-    overflow: hidden;
-    /* Make the about card itself a flex container */
-    display: flex; 
-}
-.about-text-content {
-    flex: 1; /* Takes up one part of the space (e.g., 50%) */
-    padding: 20px;
-    text-align: left;
-}
-.about-image-grid {
-    flex: 1; /* Takes up one part of the space (e.g., 50%) */
-    display: grid; /* Use grid to lay out the internal images */
-    grid-template-columns: 1fr 1fr; /* 2 columns, 2 rows for 4 images */
-    gap: 2px; /* Small gap between image tiles */
-    padding: 2px; /* Small border padding */
-}
-.about-image-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    margin: 0;
-    border-radius: 0;
+/* Footer */
+footer {
+    background: var(--bg-deep-indigo);
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
 }
 
-
-/* --- HOBBIES SPACING & LAYOUT --- */
-#hobbies {
-    /* Reset old grid properties */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+footer a {
+    color: var(--neon-cyan);
+    margin: 0 1rem;
+    text-decoration: none;
 }
 
-/* --- STYLES FOR CONCEPT/INSTRUCTION CARD (BOTTOM ROW) --- */
-#concept-card {
-    /* This card must be 100% width to break to the next line and span fully */
-    flex: 1 1 100%; 
-    background-color: var(--primary-color); /* Highlight color */
-    color: white;
-    text-align: left;
-    padding: 20px;
-}
-#concept-card h2 {
-    color: var(--text-color);
-    border-bottom-color: var(--secondary-color);
-}
-#concept-card ul {
-    list-style: disc;
-    margin-left: 20px;
-    margin-top: 10px;
-}
-
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-}
-
-h2 {
-    color: var(--secondary-color);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    position: relative; 
-    display: inline-block; 
-    padding-right: 30px; 
-}
-h3 {
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-}
-p {
-    margin-bottom: 10px;
-}
-
-.highlight-image {
-    width: 100%;
-    height: auto; 
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    display: block;
-}
-
-
-/* --- QUICK FACTS HOVER FIX --- */
-.sidebar h2::after {
-    content: '▼'; 
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.8em;
-    transition: transform 0.3s ease-in-out;
-    color: var(--secondary-color);
-}
-
-.sidebar:hover h2::after {
-    transform: translateY(-50%) rotate(180deg);
-}
-
-.sidebar section {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out, opacity 0.3s;
-    text-align: left; 
-}
-
-.sidebar:hover section {
-    max-height: 300px;
-    opacity: 1;
-}
-
-/* --- 5. Responsiveness (Media Queries) --- */
+/* Responsive */
 @media (max-width: 768px) {
-    /* Update .container removal in HTML, so we only need to target main flex content */
-    #main-flex-content {
-        flex-direction: column; /* Stacks items vertically on small screens */
-        padding: 15px;
-        gap: 15px;
+    .hero {
+        flex-direction: column;
+        text-align: center;
     }
 
-    /* All cards should take full width on small screens */
-    .sidebar, .profile-card, #about, #hobbies, #concept-card {
-        flex: 1 1 100%; 
-        max-width: 100%;
-        margin-top: 0; 
-    }
-    
-    /* Ensure About Me sections stack on mobile */
-    #about {
-        flex-direction: column; 
-    }
-    .about-text-content, .about-image-grid {
-        flex: 1 1 100%;
+    .hero-content {
         max-width: 100%;
     }
-    #full-width-content-area {
-        min-height: 150px; /* Reduce height on mobile */
-    }
-    #full-width-content-area h2 {
-        font-size: 1.5em; /* Shrink title size */
-    }
-    #full-width-content-area p {
-        padding: 0 10px; /* Add padding to keep text off edges */
-    }
-    
-    /* Old grid media queries are obsolete */
-    /* main, .sidebar { grid-column: 1 / -1; } */
-    /* #card-grid { grid-template-columns: 1fr; } */
-    /* .profile-card, #about, #hobbies { grid-column: 1 / -1; grid-row: auto; } */
 
-
-    .sidebar {
-        position: static;
-        top: auto;
-        max-height: none !important;
-        opacity: 1 !important;
+    .hero-photo img {
+        width: 200px;
+        height: 200px;
     }
 
-    .sidebar section {
-        max-height: none;
-        opacity: 1;
-        padding: 10px 0;
-        border-top: 1px solid var(--shadow);
-        margin-top: 10px;
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-deep-indigo);
+        display: none;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 1rem 0;
     }
 }
