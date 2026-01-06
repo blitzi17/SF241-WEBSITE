@@ -1,52 +1,57 @@
-// Scroll-to-Reveal Animation
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('reveal');
-        }
-    });
-}, { threshold: 0.1 });
-
-sections.forEach(section => observer.observe(section));
-
-// Vue.js for Gallery
-new Vue({
-    el: '#gallery-app',
-    data: {
-        items: [
-            { id: 1, src: 'https://via.placeholder.com/300x200?text=Project+1', title: 'Project 1', description: 'Description of project 1.' },
-            { id: 2, src: 'https://via.placeholder.com/300x200?text=Project+2', title: 'Project 2', description: 'Description of project 2.' },
-            { id: 3, src: 'https://via.placeholder.com/300x200?text=Project+3', title: 'Project 3', description: 'Description of project 3.' }
-        ]
-    }
-});
-
-// Vue.js for Guestbook
-new Vue({
-    el: '#guestbook-app',
-    data: {
-        newMessage: { name: '', message: '', rating: '' },
-        messages: [],
-        showLog: false
-    },
-    methods: {
-        addMessage() {
-            const msg = {
-                id: Date.now(),
-                name: this.newMessage.name,
-                message: this.newMessage.message,
-                rating: this.newMessage.rating
-            };
-            this.messages.push(msg);
-            // Log to console for admin viewing
-            console.log('New Guestbook Entry:', msg);
-            this.newMessage = { name: '', message: '', rating: '' };
+const app = Vue.createApp({
+  data() {
+    return {
+      current: 0,
+      slides: [
+        {
+          img: '../media/slide1.jpg',
+          title: 'Creative Design',
+          desc: 'Modern UI inspired by gradients and motion.'
         },
-        generateStars(rating) {
-            const fullStars = '★'.repeat(rating);
-            const emptyStars = '☆'.repeat(5 - rating);
-            return fullStars + emptyStars;
+        {
+          img: '../media/slide2.jpg',
+          title: 'Vue Projects',
+          desc: 'Interactive Vue.js applications.'
+        },
+        {
+          img: '../media/slide3.jpg',
+          title: 'User Experience',
+          desc: 'Clean layouts with smooth animations.'
         }
+      ],
+      name: '',
+      message: '',
+      messages: []
+    };
+  },
+  methods: {
+    nextSlide() {
+      this.current = (this.current + 1) % this.slides.length;
+    },
+    addMessage() {
+      this.messages.push({
+        name: this.name,
+        text: this.message
+      });
+      this.name = '';
+      this.message = '';
     }
+  },
+  mounted() {
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  }
 });
+
+app.mount('#app');
