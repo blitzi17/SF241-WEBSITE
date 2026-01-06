@@ -3,68 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Main Page - Introduction</title>
-    <link rel="stylesheet" href="/SF241-WEBSITE/CSS/style.css"> 
+    <title>My Profile Website</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <div class="logo">My Name</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <img src="/SF241-WEBSITE/media/autumn-bg.gif" id="gif-bg" alt="Animated Background">
-    <div id="content-wrap">
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>About Me</h1>
+            <p>I am a passionate developer with interests in web technologies, design, and innovation. This is a brief introduction to my profile.</p>
+        </div>
+        <div class="hero-photo">
+            <img src="https://via.placeholder.com/300" alt="Professional Photo">
+        </div>
+    </section>
 
-        <header>
-            <h1>Welcome to My World</h1>
-            <p>A place to learn a little about me.</p>
-        </header>
-
-        <div class="container"> 
-
-            <aside class="sidebar">
-                <h2>👤 Quick Facts</h2>
-
-                <section>
-                    <h3>My Nickname:</h3>
-                    <p>The name my friends usually call me is: Karol</p>
-                </section>
-
-                <section>
-                    <h3>My Dream in Life:</h3>
-                    <p>My ultimate goal is to have a life where abundance and happiness can be seen.</p>
-                    <p>I believe that life is simple, money answer all thats why i want to have enough money to fulfill my dreams.</p>
-                </section>
-            </aside>
-
-            <main>
-                <div id="card-grid">
-
-                    <div class="card profile-card">
-                        <div class="image-container">
-                            <img src="/SF241-WEBSITE/media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg" alt="Image of me">
-                        </div>
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div id="gallery-app">
+            <div class="gallery">
+                <div class="gallery-item" v-for="item in items" :key="item.id">
+                    <img :src="item.src" :alt="item.title">
+                    <div class="gallery-details">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
                     </div>
-
-                    <section id="about" class="card">
-                        <h2>📖 About Me</h2>
-                        <h3>My Journey So Far</h3>
-                        <p>I am currently a student dedicated to my studies and aiming for a future filled with creative achievement. My passion lies in combining design with practical application.</p>
-                        <img src="/SF241-WEBSITE/media/download (63).jpg" alt="Highlight image for About Me" class="highlight-image">
-                        <p>I focus on creating stunning floral designs for events and personal gifts. This involves selecting materials, sculpting, and perfecting the final arrangement.</p>
-                    </section>
-
-                    <section id="hobbies" class="card">
-                        <h2>🕹️ Hobbies & Interests</h2>
-                        <img src="/SF241-WEBSITE/media/09c40290-36c3-4c1a-9b96-ee1e8a727551.jpg" alt="Image showcasing one of your hobbies." class="highlight-image">
-                        <p>When I'm not working on my dream, you can find me engaged in the following activities:</p>
-                        <ul>
-                            <li>Hobby 1: Flower making and arrangement.</li>
-                            <li>Hobby 2: Event Design.</li>
-                            <li>Hobby 3: Sculpting and Installion Art.</li>
-                        </ul>
-                        <p>I find these activities help me relax and inspire new ideas.</p>
-                    </section>
-
                 </div>
-            </main>
             </div>
         </div>
+    </section>
+
+    <section id="interactions" class="interactions">
+        <h2>Interactions</h2>
+        <div id="guestbook-app">
+            <div class="guestbook">
+                <h3>Leave a Message</h3>
+                <form @submit.prevent="addMessage">
+                    <input v-model="newMessage.name" type="text" placeholder="Your Name" required>
+                    <textarea v-model="newMessage.message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+                <div class="messages">
+                    <div class="message" v-for="msg in messages" :key="msg.id">
+                        <strong>{{ msg.name }}</strong>: {{ msg.message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 My Name. All rights reserved.</p>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        // Scroll-to-Reveal Animation
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Vue.js for Gallery
+        new Vue({
+            el: '#gallery-app',
+            data: {
+                items: [
+                    { id: 1, src: 'https://via.placeholder.com/300x200?text=Project+1', title: 'Project 1', description: 'Description of project 1.' },
+                    { id: 2, src: 'https://via.placeholder.com/300x200?text=Project+2', title: 'Project 2', description: 'Description of project 2.' },
+                    { id: 3, src: 'https://via.placeholder.com/300x200?text=Project+3', title: 'Project 3', description: 'Description of project 3.' }
+                ]
+            }
+        });
+
+        // Vue.js for Guestbook
+        new Vue({
+            el: '#guestbook-app',
+            data: {
+                newMessage: { name: '', message: '' },
+                messages: []
+            },
+            methods: {
+                addMessage() {
+                    this.messages.push({
+                        id: Date.now(),
+                        name: this.newMessage.name,
+                        message: this.newMessage.message
+                    });
+                    this.newMessage = { name: '', message: '' };
+                }
+            }
+        });
+    </script>
 </body>
 </html>
