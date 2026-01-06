@@ -1,41 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-    <div id="app">
-        <header>
-            <nav class="nav-container">
-                <div class="logo">IM' <span class="highlight">Karol</span></div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <header>
+        <div class="logo">My Name</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <p class="accent-text">🚀 We're constantly pushing the boundaries</p>
-                <h1>Creative Digital <span class="gradient-text">Innovation</span></h1>
-                <p class="hero-description">I transform ideas into immersive digital realities that captivate and inspire.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">Discover <i class="fas fa-arrow-right"></i></button>
-                    <button class="btn btn-secondary">Connect With Us</button>
-                </div>
-            </div>
-            <div class="hero-image-container">
-                <img src="../media/hero-placeholder.jpg" alt="Hero" class="hero-img">
-                <div class="experience-badge">
-                    <span class="years">10+ Years</span>
-                    <span class="text">Digital Experience</span>
-                </div>
-            </div>
-        </section>
-
-        <portfolio-gallery></portfolio-gallery>
-
-        <guestbook-form></guestbook-form>
-
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>About Me</h1>
+            <p>I am a passionate developer with interests in web technologies, design, and innovation. This is a brief introduction to my profile.</p>
         </div>
+        <div class="hero-photo">
+            <img src="https://via.placeholder.com/300" alt="Professional Photo">
+        </div>
+    </section>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="../JS/main.js"></script>
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div id="gallery-app">
+            <div class="gallery">
+                <div class="gallery-item" v-for="item in items" :key="item.id">
+                    <img :src="item.src" :alt="item.title">
+                    <div class="gallery-details">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interactions" class="interactions">
+        <h2>Interactions</h2>
+        <div id="guestbook-app">
+            <div class="guestbook">
+                <h3>Leave a Message</h3>
+                <form @submit.prevent="addMessage">
+                    <input v-model="newMessage.name" type="text" placeholder="Your Name" required>
+                    <textarea v-model="newMessage.message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+                <div class="messages">
+                    <div class="message" v-for="msg in messages" :key="msg.id">
+                        <strong>{{ msg.name }}</strong>: {{ msg.message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 My Name. All rights reserved.</p>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        // Scroll-to-Reveal Animation
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Vue.js for Gallery
+        new Vue({
+            el: '#gallery-app',
+            data: {
+                items: [
+                    { id: 1, src: 'https://via.placeholder.com/300x200?text=Project+1', title: 'Project 1', description: 'Description of project 1.' },
+                    { id: 2, src: 'https://via.placeholder.com/300x200?text=Project+2', title: 'Project 2', description: 'Description of project 2.' },
+                    { id: 3, src: 'https://via.placeholder.com/300x200?text=Project+3', title: 'Project 3', description: 'Description of project 3.' }
+                ]
+            }
+        });
+
+        // Vue.js for Guestbook
+        new Vue({
+            el: '#guestbook-app',
+            data: {
+                newMessage: { name: '', message: '' },
+                messages: []
+            },
+            methods: {
+                addMessage() {
+                    this.messages.push({
+                        id: Date.now(),
+                        name: this.newMessage.name,
+                        message: this.newMessage.message
+                    });
+                    this.newMessage = { name: '', message: '' };
+                }
+            }
+        });
+    </script>
 </body>
+</html>
