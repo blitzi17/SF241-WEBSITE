@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IM' Karol | Creative Digital Innovation</title>
+    <title>IM' Karol | Creative Digital Student</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
@@ -19,48 +18,35 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#">Resources</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <p class="accent-text">🚀 We're constantly pushing the boundaries</p>
+            <p class="accent-text">🚀 Constant Innovation</p>
             <h1>Creative Digital <span class="gradient-text">Innovation</span></h1>
-            <p class="hero-description">
-                I'm a passionate digital creator specializing in AI-powered design, 
-                innovative web experiences, and cutting-edge visual storytelling.
-            </p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Discover <i class="fas fa-arrow-right"></i></button>
-                <button class="btn btn-secondary">Connect With Us</button>
-            </div>
+            <p class="hero-description">I'm a passionate digital student specializing in AI-powered design and cutting-edge visual storytelling.</p>
         </div>
         <div class="hero-image-container">
-            <img src="../media/space GIF.gif" alt="Featured Innovation" class="hero-img">
-            <div class="experience-badge">
-                <span class="years">10+ Years</span>
-                <span class="text">Digital Experience</span>
-            </div>
+            <img src="../media/space GIF.gif" alt="Space Innovation" class="hero-img">
         </div>
     </section>
 
     <section id="portfolio" class="section-container">
-        <p class="accent-text" style="text-align: center;">Explore my latest projects</p>
         <h2 style="text-align: center;">Featured <span class="gradient-text">Portfolio</span></h2>
         
         <div class="gallery-grid">
             <div class="gallery-item" onclick="openModal('../media/Aipowered data analysis and machine learning coding with digital brains in business intelligence_Premium AI-generated image.jpg', 'AI Brand Identity', 'A deep dive into neon-futuristic aesthetics and AI-generated visual styles.')">
-                <img src="../media/Aipowered data analysis and machine learning coding with digital brains in business intelligence_Premium AI-generated image.jpg" alt="AI Brand Identity">
+                <img src="../media/Aipowered data analysis and machine learning coding with digital brains in business intelligence_Premium AI-generated image.jpg">
                 <div class="hover-overlay">
                     <h3>AI Brand Identity</h3>
                     <p>Click to Zoom</p>
                 </div>
             </div>
 
-            <div class="gallery-item" onclick="openModal('../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg', 'Cyber UI Design', 'Interactive dashboard prototype featuring glassmorphism and cyber-tech elements.')">
-                <img src="../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg" alt="Cyber UI Design">
+            <div class="gallery-item" onclick="openModal('../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg', 'Cyber UI Design', 'Interactive dashboard prototype featuring glassmorphism and tech elements.')">
+                <img src="../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg">
                 <div class="hover-overlay">
                     <h3>Cyber UI Design</h3>
                     <p>Click to Zoom</p>
@@ -68,7 +54,7 @@
             </div>
 
             <div class="gallery-item" onclick="openModal('../media/firstweb.jpg', 'Web Experience', 'Focusing on seamless user journeys and modern interactive web technologies.')">
-                <img src="../media/firstweb.jpg" alt="Web Experience">
+                <img src="../media/firstweb.jpg">
                 <div class="hover-overlay">
                     <h3>Web Experience</h3>
                     <p>Click to Zoom</p>
@@ -76,7 +62,7 @@
             </div>
 
             <div class="gallery-item" onclick="openModal('../media/WebDesign.jpg', 'Visual Storytelling', 'Using digital art to tell compelling and immersive brand stories.')">
-                <img src="../media/WebDesign.jpg" alt="Visual Storytelling">
+                <img src="../media/WebDesign.jpg">
                 <div class="hover-overlay">
                     <h3>Visual Storytelling</h3>
                     <p>Click to Zoom</p>
@@ -85,77 +71,20 @@
         </div>
     </section>
 
-    <section id="contact" class="section-container">
-        <h2 style="text-align: center;">Leave Your <span class="gradient-text">Mark</span></h2>
-        <div class="form-card">
-            <form id="guestbookForm">
-                <div class="form-row" style="display: flex; gap: 20px; margin-bottom: 20px;">
-                    <div class="form-group" style="flex: 1;">
-                        <label>Your Name</label>
-                        <input type="text" class="form-input" placeholder="John Doe" required style="width: 100%;">
-                    </div>
-                    <div class="form-group" style="flex: 1;">
-                        <label>Email Address</label>
-                        <input type="email" class="form-input" placeholder="john@example.com" required style="width: 100%;">
-                    </div>
-                </div>
-                <div class="form-group" style="margin-bottom: 20px;">
-                    <label>Rate Your Experience</label>
-                    <select class="form-input" style="width: 100%;">
-                        <option>⭐⭐⭐⭐⭐ Excellent</option>
-                        <option>⭐⭐⭐⭐ Very Good</option>
-                        <option>⭐⭐⭐ Good</option>
-                    </select>
-                </div>
-                <div class="form-group" style="margin-bottom: 20px;">
-                    <label>Your Message</label>
-                    <textarea class="form-input" rows="4" placeholder="Share your thoughts..." style="width: 100%;"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Message <i class="fas fa-paper-plane"></i></button>
-            </form>
-        </div>
-    </section>
-
     <div id="zoomModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <img id="modalImg" src="" alt="Zoomed View" class="modal-img">
+            <img id="modalImg" src="" class="modal-img">
             <div class="modal-text">
                 <h2 id="modalTitle" class="gradient-text"></h2>
-                <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 15px 0;">
                 <p id="modalDesc"></p>
-                <button class="btn btn-secondary" onclick="closeModal()" style="margin-top: 20px;">Close Details</button>
+                <button class="btn btn-primary" onclick="closeModal()" style="margin-top:20px;">Close</button>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="logo">IM' <span class="highlight">Karol</span></div>
-                <p>Pushing the boundaries of digital creativity through AI-powered design.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h4>Connect With Us</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom" style="text-align: center; margin-top: 40px; opacity: 0.6;">
-            <p>&copy; 2026 Karol. All rights reserved.</p>
-        </div>
+        <p>&copy; 2026 Karol. All rights reserved.</p>
     </footer>
 
     <script src="../JS/main.js"></script>
