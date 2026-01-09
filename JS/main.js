@@ -1,17 +1,15 @@
 const trigger = document.getElementById('frameTrigger');
 const typewriter = document.getElementById('typewriter');
-const text = "Welcome to my digital space! I am Karol Joy. This is my journey in innovation. Explore and enjoy.";
+const text = "Welcome to my digital gallery. I am Karol Joy, a creator passionate about innovation and digital aesthetics. Thank you for visiting.";
 
 let i = 0;
 let isTyping = false;
 
 trigger.addEventListener('mouseenter', () => {
-    if (!isTyping) {
-        isTyping = true;
-        typewriter.innerHTML = "";
-        i = 0;
-        setTimeout(typeEffect, 600); // Start typing after the slide starts
-    }
+    isTyping = true;
+    typewriter.innerHTML = "";
+    i = 0;
+    setTimeout(typeEffect, 600);
 });
 
 trigger.addEventListener('mouseleave', () => {
