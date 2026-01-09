@@ -152,44 +152,68 @@ body {
 .gallery-container {
     display: flex;
     justify-content: center;
-    gap: 40px; /* Increased gap a bit so frames don't feel crowded */
+    gap: 30px;
     padding: 60px 20px;
     flex-wrap: wrap;
 }
 
-/* The container for each gallery item */
 .gallery-item {
     position: relative;
+    /* This sets the uniform size for every box */
+    width: 350px; 
+    height: 450px; 
     cursor: pointer;
-    /* Removed fixed width/height, overflow, shadow, and border-radius. */
-    /* The container size will now fit the image exactly. */
-    transition: transform 0.3s ease; /* Adds a smooth zoom effect to the whole item */
+    overflow: hidden; /* Ensures nothing leaks out of the rectangle */
+    border-radius: 8px; /* Optional: smooths the corners slightly */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
 }
 
-/* The framed image itself */
 .gallery-item img {
-    display: block; /* Removes any extra space below the image */
-    width: 100%; /* Makes the image fill the container width */
-    height: 100%; /* Makes the image fill the container height */
-    object-fit: cover; /* Ensures the image covers the area without distorting, cropping if necessary */
+    width: 100%;
+    height: 100%;
+    /* This is the magic part: it crops the image to fit the box perfectly */
+    object-fit: cover; 
+    display: block;
 }
 
-/* The dark overlay with text that appears on hover */
+/* --- HOVER EFFECTS --- */
 .hover-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Dark, semi-transparent background */
+    background: rgba(0, 0, 0, 0.75);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Hidden by default */
-    transition: opacity 0.3s ease; /* Smooth fade-in */
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
+.gallery-item:hover {
+    transform: translateY(-10px); /* Lifts the box up slightly on hover */
+}
+
+.gallery-item:hover .hover-overlay {
+    opacity: 1;
+}
+
+.hover-overlay h3 {
+    color: #fdf5e6;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hover-overlay p {
+    font-size: 14px;
+    color: #d4af37; /* Gold color */
+    font-weight: bold;
+    text-transform: uppercase;
+}
 /* --- HOVER EFFECTS --- */
 
 /* When you hover over the gallery item, zoom the entire thing (frame + overlay) slightly */
