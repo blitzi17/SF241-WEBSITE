@@ -3,66 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IM' Karol - Portfolio</title>
+    <title>IM' Karol | Creative Digital Innovation</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
 
-    <header class="nav-container">
-        <div class="logo">IM' <span class="highlight">Karol</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">IM' <span class="highlight">Karol</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+        </nav>
     </header>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <p class="accent-text">🚀 Constant Innovation</p>
+            <p class="accent-text">🚀 We're constantly pushing the boundaries</p>
             <h1>Creative Digital <span class="gradient-text">Innovation</span></h1>
-            <p>I transform ideas into immersive digital realities.</p>
+            <p class="hero-description">
+                I'm a passionate digital creator specializing in AI-powered design, 
+                innovative web experiences, and cutting-edge visual storytelling.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Discover <i class="fas fa-arrow-right"></i></button>
+                <button class="btn btn-secondary">Connect With Us</button>
+            </div>
         </div>
         <div class="hero-image-container">
-            <img src="../media/hero-placeholder.jpg" class="hero-img">
+            <img src="../media/hero-placeholder.jpg" alt="Featured Innovation" class="hero-img">
+            <div class="experience-badge">
+                <span class="years">10+ Years</span>
+                <span class="text">Digital Experience</span>
+            </div>
         </div>
     </section>
 
     <section id="portfolio" class="section-container">
-        <h2>Featured <span class="gradient-text">Portfolio</span></h2>
+        <p class="accent-text" style="text-align: center;">Explore my latest projects</p>
+        <h2 style="text-align: center;">Featured <span class="gradient-text">Portfolio</span></h2>
+        
         <div class="gallery-grid">
-            
-            <div class="gallery-item" onclick="openModal('../media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg', 'AI Brand Identity', 'This project focuses on neon-futuristic branding.')">
-                <img src="../media/9428f962-9bb2-4913-be85-ec03ff_thumb.jpg" alt="Project 1">
+            <div class="gallery-item" onclick="openModal('../media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg', 'AI Brand Identity', 'A deep dive into neon-futuristic aesthetics and AI-generated visual styles.')">
+                <img src="../media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg" alt="AI Brand Identity">
                 <div class="hover-overlay">
                     <h3>AI Brand Identity</h3>
-                    <p>View Details</p>
+                    <p>Click to Zoom</p>
                 </div>
             </div>
 
-            <div class="gallery-item" onclick="openModal('../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg', 'Cyber UI Design', 'Interactive dashboard with glassmorphism effects.')">
-                <img src="../media/09c40290-36c3-4c1a-9b96-ee1d88_thumb.jpg" alt="Project 2">
+            <div class="gallery-item" onclick="openModal('../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg', 'Cyber UI Design', 'Interactive dashboard prototype featuring glassmorphism and cyber-tech elements.')">
+                <img src="../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg" alt="Cyber UI Design">
                 <div class="hover-overlay">
                     <h3>Cyber UI Design</h3>
-                    <p>View Details</p>
+                    <p>Click to Zoom</p>
                 </div>
             </div>
 
+            <div class="gallery-item" onclick="openModal('../media/project-3.jpg', 'Web Experience', 'Focusing on seamless user journeys and modern interactive web technologies.')">
+                <img src="../media/project-3.jpg" alt="Web Experience">
+                <div class="hover-overlay">
+                    <h3>Web Experience</h3>
+                    <p>Click to Zoom</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openModal('../media/project-4.jpg', 'Visual Storytelling', 'Using digital art to tell compelling and immersive brand stories.')">
+                <img src="../media/project-4.jpg" alt="Visual Storytelling">
+                <div class="hover-overlay">
+                    <h3>Visual Storytelling</h3>
+                    <p>Click to Zoom</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-container">
+        <h2 style="text-align: center;">Leave Your <span class="gradient-text">Mark</span></h2>
+        <div class="form-card">
+            <form id="guestbookForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" class="form-input" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rate Your Experience</label>
+                    <select class="form-input">
+                        <option>⭐⭐⭐⭐⭐ Excellent</option>
+                        <option>⭐⭐⭐⭐ Very Good</option>
+                        <option>⭐⭐⭐ Good</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Your Message</label>
+                    <textarea class="form-input" rows="4" placeholder="Share your thoughts..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Message <i class="fas fa-paper-plane"></i></button>
+            </form>
         </div>
     </section>
 
     <div id="zoomModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <img id="modalImg" src="" class="modal-img">
+            <img id="modalImg" src="" alt="Zoomed View" class="modal-img">
             <div class="modal-text">
                 <h2 id="modalTitle" class="gradient-text"></h2>
+                <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 15px 0;">
                 <p id="modalDesc"></p>
+                <button class="btn btn-secondary" onclick="closeModal()" style="margin-top: 20px;">Close Details</button>
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">IM' <span class="highlight">Karol</span></div>
+                <p>Pushing the boundaries of digital creativity through AI-powered design.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Karol. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="../JS/main.js"></script>
 </body>
