@@ -1,12 +1,4 @@
-/* --- ROOT VARIABLES --- */
-:root {
-    --gold: #d4af37;
-    --cream: #fdf5e6;
-    --dark-bg: rgba(15, 12, 10, 0.98);
-    --paper: #fdfaf6;
-}
-
-/* --- BASE LAYOUT --- */
+/* --- BASE SETUP --- */
 * { 
     margin: 0; 
     padding: 0; 
@@ -21,10 +13,9 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    color: var(--cream);
 }
 
-/* --- NAVIGATION & HEADER (Added Shadows) --- */
+/* --- HEADER PART (Shadow added, Dropdown fixed) --- */
 .nav-container { 
     display: flex; 
     justify-content: center; 
@@ -35,66 +26,69 @@ body {
 
 .nav-links { 
     display: flex; 
-    list-style: none; /* Removes circles from main nav */
-    gap: 40px; 
+    list-style: none; 
+    gap: 50px; 
 }
 
 .nav-links a { 
     text-decoration: none; 
-    color: var(--cream); 
-    font-size: 15px; 
+    color: #fdf5e6; 
+    font-size: 16px; 
     letter-spacing: 3px; 
     text-transform: uppercase;
-    font-weight: 600;
-    /* Added text shadow for visibility */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    font-weight: bold;
+    /* Added shadow for better visibility */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); 
 }
 
-/* --- DROPDOWN (Removed Circles) --- */
+/* FIXED DROPDOWN (Stays under the word) */
+.dropdown { 
+    position: relative; 
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--dark-bg);
-    min-width: 160px;
+    left: 0; /* Align to the start of the word */
+    background: rgba(15, 12, 10, 0.95);
+    min-width: 180px;
     padding: 10px 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    z-index: 10000;
-    list-style: none; /* Removes the "little circles" */
+    list-style: none; /* Removed the little circles */
 }
 
-.dropdown-content li {
-    list-style: none; /* Extra insurance to remove bullets */
+.dropdown:hover .dropdown-content { 
+    display: block; 
 }
 
-.dropdown:hover .dropdown-content { display: block; }
+.dropdown-content li a {
+    padding: 12px 20px;
+    font-size: 13px;
+    text-shadow: none; /* Clean look for menu items */
+}
 
-/* --- MAIN HERO SECTION --- */
+/* --- CENTERED HERO SECTION --- */
 .main-display {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
-    padding: 20px;
+    padding-bottom: 100px; /* Moves everything slightly higher */
 }
 
-/* This keeps the pair centered in the screen */
 .interactive-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 1200px; /* Limits how far they can spread apart */
+    width: 900px; /* Bigger container */
     height: 700px;
 }
 
-/* PORTRAIT BOX (Large) */
+/* BIGGER FRAME */
 .portrait-box {
-    width: 600px; 
-    height: auto;
+    width: 700px; /* Significantly bigger */
     z-index: 20;
     transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -105,61 +99,59 @@ body {
     object-fit: contain; 
 }
 
-/* LANDSCAPE SCROLL (Centered behind frame initially) */
+/* LANDSCAPE SCROLL */
 .scroll-area {
     position: absolute;
-    width: 550px;   
-    height: 350px;  
-    background: var(--paper);
+    width: 600px; /* Landscape Rectangle */
+    height: 380px;  
+    background: #fdfaf6;
     padding: 40px;
     opacity: 0;
     z-index: 10;
     transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border-radius: 8px;
-    top: 50%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    border-radius: 4px;
     left: 50%;
-    transform: translate(-50%, -50%); /* Starts dead center */
+    top: 50%;
+    transform: translate(-50%, -50%); /* Starts hidden behind frame */
 }
 
-/* --- HOVER ANIMATION (Balanced Side-by-Side) --- */
+/* --- HOVER ANIMATION (Stays on screen) --- */
 .interactive-wrapper:hover .portrait-box {
-    /* Moves right just enough to fit the scroll next to it */
-    transform: translateX(280px); 
+    transform: translateX(250px); /* Slides right */
 }
 
 .interactive-wrapper:hover .scroll-area {
     opacity: 1;
-    /* Moves left just enough to fit next to the frame */
-    transform: translate(-105%, -50%); 
+    transform: translate(-105%, -50%); /* Slides left */
 }
 
 /* TYPEWRITER TEXT */
 .ink-text {
     font-family: 'Courier New', monospace;
-    font-size: 18px;
+    font-size: 19px;
     color: #2b1d10;
     line-height: 1.6;
     font-weight: bold;
 }
 
 /* --- MOBILE AUTO-ADJUST --- */
-@media (max-width: 1024px) {
+@media (max-width: 1000px) {
     .interactive-wrapper {
         flex-direction: column;
+        width: 100%;
         height: auto;
     }
     .portrait-box {
-        width: 90%;
+        width: 80%;
         transform: none !important;
     }
     .scroll-area {
         position: relative;
-        width: 95%;
+        width: 90%;
         opacity: 1;
         transform: none !important;
-        left: 0;
-        top: 0;
+        left: 0; top: 0;
         margin-top: 20px;
     }
 }
