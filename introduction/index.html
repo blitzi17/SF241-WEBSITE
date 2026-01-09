@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IM' Karol | Creative Digital Student</title>
+    <title>IM' Karol | Creative Digital Innovation</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -26,7 +26,11 @@
         <div class="hero-content">
             <p class="accent-text">🚀 Constant Innovation</p>
             <h1>Creative Digital <span class="gradient-text">Innovation</span></h1>
-            <p class="hero-description">I'm a passionate digital student specializing in AI-powered design and cutting-edge visual storytelling.</p>
+            <p class="hero-description">I transform ideas into immersive digital realities using AI-powered design and interactive storytelling.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Discover <i class="fas fa-arrow-right"></i></button>
+                <button class="btn btn-secondary">Connect</button>
+            </div>
         </div>
         <div class="hero-image-container">
             <img src="../media/space GIF.gif" alt="Space Innovation" class="hero-img">
@@ -71,6 +75,25 @@
         </div>
     </section>
 
+    <section id="contact" class="section-container">
+        <h2 style="text-align: center;">Leave Your <span class="gradient-text">Mark</span></h2>
+        <div class="form-card">
+            <form id="guestbookForm">
+                <div class="form-row">
+                    <input type="text" class="form-input" placeholder="Your Name" required>
+                    <input type="email" class="form-input" placeholder="Your Email" required>
+                </div>
+                <select class="form-input">
+                    <option>⭐⭐⭐⭐⭐ Excellent</option>
+                    <option>⭐⭐⭐⭐ Very Good</option>
+                    <option>⭐⭐⭐ Good</option>
+                </select>
+                <textarea class="form-input" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
     <div id="zoomModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -78,13 +101,16 @@
             <div class="modal-text">
                 <h2 id="modalTitle" class="gradient-text"></h2>
                 <p id="modalDesc"></p>
-                <button class="btn btn-primary" onclick="closeModal()" style="margin-top:20px;">Close</button>
+                <button class="btn btn-secondary" onclick="closeModal()" style="margin-top:20px;">Close Details</button>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2026 Karol. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="logo">IM' <span class="highlight">Karol</span></div>
+            <p>&copy; 2026 Karol. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="../JS/main.js"></script>
