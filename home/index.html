@@ -1,85 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Profile | Vue Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="../CSS/style.css">
-
-  <!-- Vue -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karol Joy | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
-
 <body>
-<div id="app">
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">NICOLAI</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#portfolio">Resources</a>
-    </nav>
-  </header>
+    <div class="bg-overlay"></div>
 
-  <!-- HERO / ABOUT -->
-  <section id="home" class="hero reveal">
-    <div class="hero-text">
-      <h1>Hello, I’m a Vue.js Developer</h1>
-      <p>
-        I design responsive, interactive, and visually engaging websites
-        inspired by modern UI trends.
-      </p>
-    </div>
-    <img src="../media/profile.jpg" alt="Professional photo">
-  </section>
+    <header>
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">ABOUT ▾</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">HOBBIES</a></li>
+                        <li><a href="#">GOALS</a></li>
+                        <li><a href="#">EDUCATION</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">PROJECTS</a></li>
+                <li><a href="#">GALLERY</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio" class="reveal">
-    <h2>Portfolio</h2>
+    <main class="hero">
+        <div class="greeting-layer">
+            <span class="float-text t1">bonjour</span>
+            <span class="float-text t2">ciao</span>
+            <span class="float-text t3">hola</span>
+            <span class="float-text t4">hello</span>
+        </div>
 
-    <div class="carousel">
-      <img :src="slides[current].img" :alt="slides[current].title">
+        <div class="main-display">
+            <div class="interactive-wrapper" id="frameTrigger">
+                <div class="scroll-area">
+                    <div id="typewriter" class="ink-text"></div>
+                </div>
 
-      <div class="details">
-        <h3>{{ slides[current].title }}</h3>
-        <p>{{ slides[current].desc }}</p>
-        <button @click="nextSlide">Next</button>
-      </div>
-    </div>
-  </section>
+                <div class="portrait-box">
+                    <img src="../media/MAIN PIC.png" alt="Karol Joy" class="portrait-img">
+                </div>
+            </div>
 
-  <!-- GUESTBOOK -->
-  <section class="reveal">
-    <h2>Guestbook</h2>
+            <div class="name-container">
+                <h1 class="hero-name">i'm <span class="script-gold">Karol Joy</span></h1>
+            </div>
+        </div>
+    </main>
 
-    <form @submit.prevent="addMessage">
-      <input type="text" v-model="name" placeholder="Your Name" required>
-      <textarea v-model="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
-
-    <div class="messages">
-      <div class="msg" v-for="(m, i) in messages" :key="i">
-        <strong>{{ m.name }}</strong>
-        <p>{{ m.text }}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Nicolai | GitHub · LinkedIn · Facebook</p>
-  </footer>
-
-</div>
-
-<!-- JS -->
-<script src="../JS/main.js" defer></script>
+    <script src="../JS/main.js"></script>
 </body>
 </html>
