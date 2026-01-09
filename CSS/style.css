@@ -20,16 +20,17 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow-x: hidden; /* Prevent horizontal scroll, allow vertical */
     color: var(--cream);
 }
 
-/* --- NAVIGATION FIX (Clean & Pretty) --- */
+/* --- NAVIGATION & DROPDOWN FIX --- */
 .nav-container { 
     display: flex; 
     justify-content: center; 
-    padding: 40px 0;
-    z-index: 1000; 
+    padding: 30px 0;
+    z-index: 9999; /* Highest priority to keep dropdowns visible */
+    position: relative;
 }
 
 .nav-links { 
@@ -46,7 +47,9 @@ body {
     text-transform: uppercase;
 }
 
-/* Dropdowns without yellow outlines */
+/* Dropdown Menu Styling */
+.dropdown { position: relative; }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -57,9 +60,18 @@ body {
     min-width: 180px;
     padding: 15px 0;
     box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    z-index: 10000; /* Ensure it stays on top of the hero content */
 }
 
-.dropdown:hover .dropdown-content { display: block; }
+.dropdown:hover .dropdown-content { 
+    display: block; 
+}
+
+.dropdown-content li a {
+    padding: 10px 20px;
+    font-size: 12px;
+    display: block;
+}
 
 /* --- MAIN HERO SECTION --- */
 .main-display {
@@ -67,18 +79,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Vertical centering */
+    justify-content: flex-start; /* Aligns content higher up */
+    padding-top: 20px; /* Adjust this to move the frame higher or lower */
     position: relative;
+    z-index: 10;
 }
 
+/* BIGGER FRAME CONTAINER */
 .interactive-wrapper {
     position: relative;
-    width: 700px;  /* MUCH BIGGER FRAME */
-    height: 800px; 
+    width: 850px;  /* Increased size */
+    height: 950px; /* Increased size */
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.8s ease;
+    margin-top: -30px; /* Pushes the frame higher toward the nav */
 }
 
 .portrait-box {
@@ -94,51 +109,51 @@ body {
     object-fit: contain; 
 }
 
-/* --- THE RECTANGLE LANDSCAPE SCROLL --- */
+/* LANDSCAPE SCROLL */
 .scroll-area {
     position: absolute;
-    width: 600px;   /* Landscape Width */
-    height: 350px;  /* Landscape Height */
+    width: 650px;   
+    height: 400px;  
     background: var(--paper);
     padding: 50px;
     opacity: 0;
-    z-index: 10;
+    z-index: 5; /* Behind the frame until hover */
     transition: all 0.9s cubic-bezier(0.19, 1, 0.22, 1);
     box-shadow: 0 30px 60px rgba(0,0,0,0.7);
     border-radius: 4px;
+    top: 45%; /* Centered vertically relative to the wrapper */
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Hidden behind frame */
+    transform: translate(-50%, -50%);
 }
 
 /* --- HOVER ANIMATION --- */
 .interactive-wrapper:hover .portrait-box {
-    transform: translateX(300px) scale(0.9); /* Moves right and shrinks slightly */
+    transform: translateX(350px); /* Frame moves right */
 }
 
 .interactive-wrapper:hover .scroll-area {
     opacity: 1;
-    transform: translate(-110%, -50%); /* Moves to the left as a landscape box */
+    transform: translate(-120%, -50%); /* Scroll slides left */
 }
 
-/* --- IMAGE CONTAINERS (FOOTER) --- */
+/* --- FOOTER ASSETS --- */
 .assets-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin-top: -50px; /* Pulls images up to sit near the frame base */
+    margin-top: -120px; /* Pulls footer images up closer to the larger frame */
     z-index: 30;
 }
 
-.name-image-container img { width: 650px; }
-.greetings-image-container img { width: 900px; }
+.name-image-container img { width: 700px; }
+.greetings-image-container img { width: 950px; }
 
-/* TYPEWRITER STYLE */
+/* TYPEWRITER TEXT */
 .ink-text {
     font-family: 'Courier New', monospace;
-    font-size: 18px;
+    font-size: 19px;
     color: #2b1d10;
-    line-height: 1.5;
+    line-height: 1.6;
     font-weight: bold;
 }
