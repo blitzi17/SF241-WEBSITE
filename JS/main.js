@@ -1,15 +1,17 @@
 const trigger = document.getElementById('frameTrigger');
 const typewriter = document.getElementById('typewriter');
-const textToType = "Welcome to my digital space! I am Karol Joy. This is my journey in digital creation and innovation. Explore my projects and get to know the mind behind the frame.";
+const text = "Welcome to my digital space! I am Karol Joy. This is my journey in innovation. Explore and enjoy.";
 
 let i = 0;
 let isTyping = false;
 
 trigger.addEventListener('mouseenter', () => {
-    isTyping = true;
-    i = 0;
-    typewriter.innerHTML = "";
-    setTimeout(typeEffect, 500); // Wait for the slide to finish
+    if (!isTyping) {
+        isTyping = true;
+        typewriter.innerHTML = "";
+        i = 0;
+        setTimeout(typeEffect, 600); // Start typing after the slide starts
+    }
 });
 
 trigger.addEventListener('mouseleave', () => {
@@ -18,8 +20,8 @@ trigger.addEventListener('mouseleave', () => {
 });
 
 function typeEffect() {
-    if (isTyping && i < textToType.length) {
-        typewriter.innerHTML += textToType.charAt(i);
+    if (isTyping && i < text.length) {
+        typewriter.innerHTML += text.charAt(i);
         i++;
         setTimeout(typeEffect, 40);
     }
