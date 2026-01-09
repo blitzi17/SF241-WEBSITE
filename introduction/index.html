@@ -3,132 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IM' Karol | Creative Digital Innovation</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <title>Karol Joy | Creative Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="bg-overlay"></div>
+
     <header>
         <nav class="nav-container">
-            <div class="logo">IM' <span class="highlight">Karol</span></div>
+            <div class="logo">IM' <span class="pink-highlight">Karol</span></div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">About ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#">Hobbies</a>
+                        <a href="#">Goals</a>
+                        <a href="#">Education</a>
+                    </div>
+                </li>
+
+                <li><a href="#">Portfolio</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Contact ▾</a>
+                    <div class="dropdown-content">
+                        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                        <a href="https://instagram.com" target="_blank">Instagram</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <p class="accent-text">🚀 Constant Innovation</p>
-            <h1>Creative Digital <span class="gradient-text">Innovation</span></h1>
-            <p class="hero-description">I transform ideas into immersive digital realities using AI-powered design and interactive storytelling.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Discover <i class="fas fa-arrow-right"></i></button>
-                <button class="btn btn-secondary">Connect</button>
+            <div class="greeting-container">
+                <span class="moving-greet">Hello!</span>
+                <span class="moving-greet">Ciao!</span>
+                <span class="moving-greet">Hola!</span>
             </div>
+            
+            <h1>Im <span class="blue-glow">Karol Joy</span></h1>
+            <p class="hero-sub">Digital Creator & Innovation Enthusiast</p>
         </div>
-        <div class="hero-image-container">
-            <img src="../media/space GIF.gif" alt="Space Innovation" class="hero-img">
-        </div>
-    </section>
 
-    <section id="portfolio" class="section-container">
-        <h2 style="text-align: center;">Featured <span class="gradient-text">Portfolio</span></h2>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item" onclick="openModal('../media/Aipowered data analysis and machine learning coding with digital brains in business intelligence_Premium AI-generated image.jpg', 'AI Brand Identity', 'A deep dive into neon-futuristic aesthetics and AI-generated visual styles.')">
-                <img src="../media/Aipowered data analysis and machine learning coding with digital brains in business intelligence_Premium AI-generated image.jpg">
-                <div class="hover-overlay">
-                    <h3>AI Brand Identity</h3>
-                    <p>Click to Zoom</p>
-                </div>
+        <div class="interactive-container" id="frameTrigger">
+            <div class="scroll-reveal">
+                <img src="media/scroll-bg.png" alt="scroll" class="scroll-img">
+                <div id="typewriter" class="typewriter-text"></div>
             </div>
-
-            <div class="gallery-item" onclick="openModal('../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg', 'Cyber UI Design', 'Interactive dashboard prototype featuring glassmorphism and tech elements.')">
-                <img src="../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg">
-                <div class="hover-overlay">
-                    <h3>Cyber UI Design</h3>
-                    <p>Click to Zoom</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" onclick="openModal('../media/firstweb.jpg', 'Web Experience', 'Focusing on seamless user journeys and modern interactive web technologies.')">
-                <img src="../media/firstweb.jpg">
-                <div class="hover-overlay">
-                    <h3>Web Experience</h3>
-                    <p>Click to Zoom</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" onclick="openModal('../media/WebDesign.jpg', 'Visual Storytelling', 'Using digital art to tell compelling and immersive brand stories.')">
-                <img src="../media/WebDesign.jpg">
-                <div class="hover-overlay">
-                    <h3>Visual Storytelling</h3>
-                    <p>Click to Zoom</p>
-                </div>
+            
+            <div class="portrait-wrapper">
+                <img src="media/space GIF.gif" alt="Karol Portrait" class="portrait">
             </div>
         </div>
     </section>
 
-  <section id="contact" class="section-container">
-    <div class="contact-box">
-        <h2 class="contact-title">Leave Your <span class="pink-highlight">Mark</span></h2>
-        
-        <form id="guestbookForm">
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-input" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-input" placeholder="john@example.com" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Rate Your Experience</label>
-                <select class="form-input">
-                    <option>⭐⭐⭐⭐⭐ Excellent</option>
-                    <option>⭐⭐⭐⭐ Very Good</option>
-                    <option>⭐⭐⭐ Good</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Your Message</label>
-                <textarea class="form-input" rows="4" placeholder="Share your thoughts..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary glow-button">Send Message</button>
-        </form>
-    </div>
-</section>
-
-    <div id="zoomModal" class="modal-overlay" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <img id="modalImg" src="" class="modal-img">
-            <div class="modal-text">
-                <h2 id="modalTitle" class="gradient-text"></h2>
-                <p id="modalDesc"></p>
-                <button class="btn btn-secondary" onclick="closeModal()" style="margin-top:20px;">Close Details</button>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="logo">IM' <span class="highlight">Karol</span></div>
-            <p>&copy; 2026 Karol. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="../JS/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
