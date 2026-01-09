@@ -1,6 +1,7 @@
+/* --- HERO TYPEWRITER EFFECT --- */
 const trigger = document.getElementById('frameTrigger');
 const typewriter = document.getElementById('typewriter');
-const text = "Welcome to my digital gallery. I am Karol Joy, a creator passionate about innovation and digital aesthetics. Thank you for visiting.";
+const textToType = "Welcome to my digital space! I am Karol Joy, a creator and innovator. Thank you for opening this scroll. Explore my journey and projects below...";
 
 let i = 0;
 let isTyping = false;
@@ -9,18 +10,33 @@ trigger.addEventListener('mouseenter', () => {
     isTyping = true;
     typewriter.innerHTML = "";
     i = 0;
-    setTimeout(typeEffect, 600);
+    setTimeout(typeEffect, 600); 
 });
 
 trigger.addEventListener('mouseleave', () => {
     isTyping = false;
     typewriter.innerHTML = "";
 });
+
+function typeEffect() {
+    if (isTyping && i < textToType.length) {
+        typewriter.innerHTML += textToType.charAt(i);
+        i++;
+        setTimeout(typeEffect, 40);
+    }
+}
+
+/* --- GALLERY MODAL FUNCTIONS --- */
 function openModal(imgSrc, title, desc) {
     const modal = document.getElementById('galleryModal');
-    document.getElementById('modalImg').src = imgSrc;
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalDesc').innerText = desc;
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+
+    modalImg.src = imgSrc;
+    modalTitle.innerText = title;
+    modalDesc.innerText = desc;
+    
     modal.style.display = "flex";
 }
 
@@ -28,16 +44,18 @@ function closeModal() {
     document.getElementById('galleryModal').style.display = "none";
 }
 
-// Close modal if user hits 'Esc' key
-document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") closeModal();
-});
-
-function typeEffect() {
-    if (isTyping && i < text.length) {
-        typewriter.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeEffect, 40);
+/* --- GLOBAL LISTENERS --- */
+// Close modal when clicking outside the content box
+window.onclick = function(event) {
+    const modal = document.getElementById('galleryModal');
+    if (event.target == modal) {
+        closeModal();
     }
 }
 
+// Close modal when pressing Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+        closeModal();
+    }
+});
