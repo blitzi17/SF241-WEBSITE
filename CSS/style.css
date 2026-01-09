@@ -152,45 +152,75 @@ body {
 .gallery-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    padding: 80px 20px;
+    gap: 40px; /* Increased gap a bit so frames don't feel crowded */
+    padding: 60px 20px;
     flex-wrap: wrap;
 }
 
+/* The container for each gallery item */
 .gallery-item {
     position: relative;
-    width: 350px;
-    height: 250px;
-    overflow: hidden;
     cursor: pointer;
-    border-radius: 4px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    /* Removed fixed width/height, overflow, shadow, and border-radius. */
+    /* The container size will now fit the image exactly. */
+    transition: transform 0.3s ease; /* Adds a smooth zoom effect to the whole item */
 }
 
+/* The framed image itself */
 .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+    display: block; /* Removes any extra space below the image */
+    max-width: 450px; /* Sets a good maximum size for the frames so they don't get too big */
+    height: auto; /* Ensures the image keeps its original proportions */
+    /* Removed width: 100%, height: 100%, object-fit: cover, and transition from here. */
 }
 
+/* The dark overlay with text that appears on hover */
 .hover-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark, semi-transparent background */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Smooth fade-in */
 }
 
-.gallery-item:hover img { transform: scale(1.1); }
-.gallery-item:hover .hover-overlay { opacity: 1; }
+/* --- HOVER EFFECTS --- */
 
-.hover-overlay h3 { color: var(--gold); letter-spacing: 2px; margin-bottom: 5px; }
-.hover-overlay p { font-size: 12px; color: white; text-transform: uppercase; }
+/* When you hover over the gallery item, zoom the entire thing (frame + overlay) slightly */
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+/* When you hover, make the overlay visible */
+.gallery-item:hover .hover-overlay {
+    opacity: 1;
+}
+
+/* Removed the old rule that only zoomed the image, as we now zoom the whole container */
+/* .gallery-item:hover img { transform: scale(1.1); } */
+
+/* Styling for the text inside the overlay */
+.hover-overlay h3 {
+    color: #fdf5e6; /* Cream color for text */
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hover-overlay p {
+    font-size: 14px;
+    color: var(--gold); /* Gold color for the "View Details" text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
 
 /* --- MODAL POPUP (Matches Scroll) --- */
 .modal {
