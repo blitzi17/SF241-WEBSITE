@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karol Joy | Creative Portfolio</title>
+    <title>Karol Joy | Digital Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
@@ -18,7 +18,7 @@
                 <li><a href="#home">Home</a></li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">About ▾</a>
+                    <a href="javascript:void(0)" class="dropbtn">About ▾</a>
                     <div class="dropdown-content">
                         <a href="#">Hobbies</a>
                         <a href="#">Goals</a>
@@ -29,7 +29,7 @@
                 <li><a href="#">Portfolio</a></li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">Contact ▾</a>
+                    <a href="javascript:void(0)" class="dropbtn">Contact ▾</a>
                     <div class="dropdown-content">
                         <a href="https://linkedin.com" target="_blank">LinkedIn</a>
                         <a href="https://github.com" target="_blank">GitHub</a>
@@ -40,29 +40,28 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="greeting-container">
-                <span class="moving-greet">Hello!</span>
-                <span class="moving-greet">Ciao!</span>
-                <span class="moving-greet">Hola!</span>
+    <main class="hero">
+        <div class="hero-left">
+            <div class="greeting-box">
+                <span class="sliding-text">Hello!</span>
+                <span class="sliding-text">Ciao!</span>
+                <span class="sliding-text">Hola!</span>
             </div>
-            
-            <h1>Im <span class="blue-glow">Karol Joy</span></h1>
-            <p class="hero-sub">Digital Creator & Innovation Enthusiast</p>
+            <h1 class="main-title">Im <span class="blue-glow">Karol Joy</span></h1>
+            <p class="subtitle">Digital Creator & Innovation Enthusiast</p>
         </div>
 
-        <div class="interactive-container" id="frameTrigger">
-            <div class="scroll-reveal">
-                <img src="media/scroll-bg.png" alt="scroll" class="scroll-img">
-                <div id="typewriter" class="typewriter-text"></div>
+        <div class="interactive-frame" id="frameTrigger">
+            <div class="scroll-container">
+                <img src="../media/scroll.png" alt="scroll" class="scroll-bg">
+                <div id="typewriter" class="ink-text"></div>
             </div>
-            
-            <div class="portrait-wrapper">
-                <img src="media/space GIF.gif" alt="Karol Portrait" class="portrait">
+
+            <div class="portrait-box">
+                <img src="../media/MAIN PIC.png" alt="Karol Joy" class="portrait-img">
             </div>
         </div>
-    </section>
+    </main>
 
     <script src="../JS/main.js"></script>
 </body>
