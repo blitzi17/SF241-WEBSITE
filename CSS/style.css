@@ -169,9 +169,9 @@ body {
 /* The framed image itself */
 .gallery-item img {
     display: block; /* Removes any extra space below the image */
-    max-width: 450px; /* Sets a good maximum size for the frames so they don't get too big */
-    height: auto; /* Ensures the image keeps its original proportions */
-    /* Removed width: 100%, height: 100%, object-fit: cover, and transition from here. */
+    width: 100%; /* Makes the image fill the container width */
+    height: 100%; /* Makes the image fill the container height */
+    object-fit: cover; /* Ensures the image covers the area without distorting, cropping if necessary */
 }
 
 /* The dark overlay with text that appears on hover */
