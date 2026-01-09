@@ -2,7 +2,7 @@
     --gold-bright: #fff3a3;
     --gold-main: #d4af37;
     --cream: #fdf5e6;
-    --parchment: #f4ece0;
+    --paper: #f8f1e7;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,39 +15,49 @@ body {
     overflow: hidden;
 }
 
-/* --- DROPDOWN FIX --- */
-.nav-container { display: flex; justify-content: center; padding: 40px; }
-.nav-links { display: flex; list-style: none; gap: 50px; z-index: 1000; }
-.nav-links a { text-decoration: none; color: var(--cream); letter-spacing: 4px; font-size: 14px; }
+.bg-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: -1;
+}
+
+/* --- FIXED NAV & DROPDOWN --- */
+.nav-container { 
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    padding: 30px; 
+    z-index: 999; /* Higher than everything else */
+}
+
+.nav-links { display: flex; list-style: none; gap: 50px; }
+.nav-links a { text-decoration: none; color: var(--cream); letter-spacing: 3px; font-size: 14px; }
 
 .dropdown { position: relative; }
 .dropdown-content {
-    display: none; 
+    display: none;
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(20, 15, 10, 0.95);
+    background: rgba(15, 12, 10, 0.98);
     list-style: none;
-    padding: 15px 0;
-    min-width: 180px;
+    min-width: 160px;
     border: 1px solid var(--gold-main);
+    padding: 10px 0;
 }
-.dropdown-content li a {
-    padding: 10px 20px;
-    display: block;
-    font-size: 12px;
-    letter-spacing: 2px;
-}
+
+.dropdown-content li a { padding: 10px 20px; font-size: 12px; display: block; }
 .dropdown:hover .dropdown-content { display: block; }
 
-/* --- INTERACTIVE LAYOUT --- */
+/* --- HERO DISPLAY --- */
 .main-display {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 70vh;
+    height: 75vh;
 }
 
 .interactive-wrapper {
@@ -57,57 +67,61 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.8s ease;
 }
 
+/* PORTRAIT: Moves right on hover */
 .portrait-box {
     width: 100%;
     height: 100%;
-    z-index: 20;
-    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 10;
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .portrait-img { width: 100%; height: 100%; object-fit: contain; }
 
-/* SCROLL TYPE AREA - Matches Frame size */
-.scroll-area {
+/* TYPE AREA: Slides left and matches frame height */
+.type-area {
     position: absolute;
-    width: 100%; /* Equal to frame width */
-    height: 90%; /* Nearly equal to frame height */
-    background: var(--parchment);
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.1), 0 10px 30px rgba(0,0,0,0.5);
-    border-radius: 5px;
+    width: 100%;
+    height: 95%;
+    background: var(--paper);
     padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
     opacity: 0;
-    transform: translateX(0);
-    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-    z-index: 10;
-    overflow: hidden;
+    z-index: 5;
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid var(--gold-main);
 }
 
-/* HOVER ACTIONS */
+/* HOVER TRIGGERS */
 .interactive-wrapper:hover .portrait-box {
-    transform: translateX(260px); /* Moves frame to the right */
+    transform: translateX(280px); /* Move frame right */
 }
 
-.interactive-wrapper:hover .scroll-area {
+.interactive-wrapper:hover .type-area {
     opacity: 1;
-    transform: translateX(-260px); /* Shows scroll on the left */
+    transform: translateX(-280px); /* Move type area left */
 }
 
-/* --- NAME BOX --- */
-.name-container { margin-top: -40px; z-index: 30; }
+/* --- NAME --- */
+.name-container { margin-top: -50px; z-index: 20; }
 .hero-name { font-family: 'Playfair Display', serif; font-size: 7rem; color: var(--cream); }
 .script-gold {
     font-family: 'Great Vibes', cursive;
     color: var(--gold-bright);
-    text-shadow: 0 0 20px rgba(255, 243, 163, 0.5);
+    text-shadow: 0 0 15px var(--gold-main);
 }
 
 .ink-text {
-    color: #3d2b1f;
+    color: #2b1f14;
     font-family: 'Courier New', monospace;
     font-size: 18px;
     line-height: 1.6;
     font-weight: bold;
 }
+
+/* Decoration Background text */
+.float-text { position: absolute; font-family: 'Playfair Display', serif; color: rgba(255,255,255,0.2); font-size: 3rem; pointer-events: none; }
+.t1 { bottom: 5%; left: 10%; }
+.t2 { bottom: 15%; right: 10%; }
