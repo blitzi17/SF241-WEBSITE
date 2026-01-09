@@ -1,205 +1,143 @@
-/* --- VARIABLES & BASE --- */
 :root {
-    --gold: #d4af37;
+    --gold-bright: #fff3a3;
+    --gold-main: #d4af37;
     --cream: #fdf5e6;
-    --dark-overlay: rgba(0, 0, 0, 0.7);
-    --font-main: 'Poppins', sans-serif;
-    --font-serif: 'Playfair Display', serif;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: var(--font-main);
+    font-family: 'Poppins', sans-serif;
     background: url('../media/BG.png') no-repeat center center fixed;
     background-size: cover;
-    color: white;
     height: 100vh;
-    overflow: hidden; /* Keeps the layout clean and app-like */
+    overflow: hidden;
 }
 
-/* DARKENING OVERLAY FOR BACKGROUND IMAGE */
 .bg-overlay {
     position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
     z-index: -1;
 }
 
-/* --- CENTERED NAVIGATION (NO LOGO) --- */
+/* --- NAVIGATION --- */
 .nav-container {
     display: flex;
-    justify-content: center; /* Centers the menu perfectly */
-    padding: 40px 0;
-    width: 100%;
+    justify-content: center;
+    padding: 40px;
 }
 
-.nav-links { 
-    display: flex; 
-    list-style: none; 
-    gap: 40px; 
-    align-items: center;
-}
-
+.nav-links { display: flex; list-style: none; gap: 50px; }
 .nav-links a { 
     text-decoration: none; 
     color: var(--cream); 
-    font-size: 13px; 
-    letter-spacing: 3px; 
-    font-weight: 300;
-    text-transform: uppercase;
-    transition: 0.4s ease;
+    font-size: 14px; 
+    letter-spacing: 4px;
+    font-weight: 400;
 }
 
-.nav-links a:hover {
-    color: var(--gold);
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
-
-/* DROPDOWN MENU */
-.dropdown { position: relative; }
-
-.dropdown-content {
-    display: none;
+/* --- FLOATING GREETINGS --- */
+.greeting-layer {
     position: absolute;
-    background: rgba(11, 9, 10, 0.95);
-    min-width: 160px;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%); /* Centers dropdown under the parent link */
-    border: 1px solid rgba(214, 175, 55, 0.2);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    z-index: 100;
-    padding: 10px 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.dropdown-content a { 
-    padding: 12px 20px; 
-    display: block; 
-    font-size: 11px;
-    letter-spacing: 1.5px;
+.float-text {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    filter: blur(1px);
 }
 
-.dropdown:hover .dropdown-content { display: block; }
+.t1 { bottom: 10%; left: 5%; }
+.t2 { bottom: 25%; right: 5%; }
+.t3 { bottom: 40%; left: 2%; }
+.t4 { bottom: 15%; right: 15%; }
+.t5 { bottom: 5%; right: 2%; }
 
-/* --- HERO SECTION & GREETING LAYER --- */
-.hero {
-    height: 80vh;
+/* --- MAIN DISPLAY --- */
+.main-display {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    padding-top: 50px;
+    height: 80vh;
 }
 
-.greeting-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-/* Side-by-side moving greetings */
-.float-text {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.3);
-    font-family: var(--font-serif);
-    font-size: 2.2rem;
-    animation: sideToSide 5s ease-in-out infinite alternate;
-}
-
-.t1 { top: 65%; left: 10%; }
-.t2 { top: 75%; right: 15%; }
-.t3 { top: 82%; left: 18%; }
-.t4 { top: 88%; right: 8%; }
-
-@keyframes sideToSide {
-    from { transform: translateX(0); opacity: 0.1; }
-    to { transform: translateX(40px); opacity: 0.5; }
-}
-
-.main-title {
-    font-family: var(--font-serif);
-    font-size: 6.5rem;
-    color: var(--cream);
-    z-index: 10;
-    margin-bottom: -50px; /* Overlaps slightly with the frame */
-    text-align: center;
-}
-
-.gold-script {
-    color: var(--gold);
-    font-style: italic;
-    text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
-}
-
-/* --- INTERACTIVE FRAME (CENTERED) --- */
 .interactive-frame {
     position: relative;
-    width: 380px;
-    height: 480px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+    width: 550px; /* Massive size like the inspo */
+    height: 650px;
+    z-index: 10;
 }
 
 .portrait-box {
-    width: 100%;
-    height: 100%;
-    z-index: 30; /* Stays above the sliding scroll */
-    cursor: pointer;
+    width: 100%; height: 100%;
+    filter: drop-shadow(0 0 30px rgba(0,0,0,0.5));
 }
 
 .portrait-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Preserves the Gold Frame shape */
+    width: 100%; height: 100%;
+    object-fit: contain;
 }
 
-/* THE SLIDING SCROLL (Slides out to the LEFT) */
+/* --- THE GOLD NAME --- */
+.name-container {
+    margin-top: -60px; /* Pulls name up to overlap slightly with frame */
+    z-index: 20;
+}
+
+.hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem; /* Ultra large */
+    color: var(--cream);
+    text-align: center;
+    line-height: 1;
+}
+
+.script-gold {
+    font-family: 'Great Vibes', cursive; /* Elegant Script */
+    color: var(--gold-bright);
+    text-shadow: 0 0 20px rgba(255, 243, 163, 0.6), 
+                 0 0 40px rgba(212, 175, 55, 0.4);
+    font-weight: 400;
+}
+
+/* --- SLIDING SCROLL --- */
 .scroll-container {
     position: absolute;
-    right: 50%; /* Starts hidden behind the frame */
+    right: 50%;
     width: 0;
-    height: 320px;
+    height: 400px;
     overflow: hidden;
-    transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
-    z-index: 20;
-    background: #f4f1ea; /* Fallback paper color */
-    border-radius: 5px;
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 5;
+    background: #fdf5e6;
+    border-radius: 10px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
 }
 
 .scroll-bg {
-    width: 480px; /* Width of the actual scroll image */
+    width: 600px;
     height: 100%;
     object-fit: cover;
-    opacity: 0.9;
 }
 
-/* TYPEWRITER TEXT ON SCROLL */
 .ink-text {
     position: absolute;
-    top: 50px; 
-    left: 70px; 
-    right: 50px;
-    color: #332b00; /* Dark ink color */
+    top: 60px; left: 80px; right: 60px;
+    color: #2b2100;
     font-family: 'Courier New', monospace;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-/* --- HOVER INTERACTION --- */
 .interactive-frame:hover .scroll-container {
-    width: 480px;   /* Expands to show the scroll */
-    right: 105%;    /* Moves it fully out to the left */
+    width: 600px;
+    right: 90%;
 }
