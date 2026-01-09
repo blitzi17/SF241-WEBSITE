@@ -3,100 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile Website</title>
+    <title>IM' Karol - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
 
-<div id="app">
-
-    <header>
-        <div class="logo">My Name</div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-            </ul>
-        </nav>
+    <header class="nav-container">
+        <div class="logo">IM' <span class="highlight">Karol</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </header>
 
-    <!-- ABOUT -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>About Me</h1>
-            <p>
-                I am a passionate developer with interests in web technologies,
-                design, and innovation.
-            </p>
+            <p class="accent-text">🚀 Constant Innovation</p>
+            <h1>Creative Digital <span class="gradient-text">Innovation</span></h1>
+            <p>I transform ideas into immersive digital realities.</p>
         </div>
-        <div class="hero-photo">
-            <img src="https://via.placeholder.com/300" alt="Professional Photo">
+        <div class="hero-image-container">
+            <img src="../media/hero-placeholder.jpg" class="hero-img">
         </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="portfolio">
-        <h2>Portfolio</h2>
+    <section id="portfolio" class="section-container">
+        <h2>Featured <span class="gradient-text">Portfolio</span></h2>
+        <div class="gallery-grid">
+            
+            <div class="gallery-item" onclick="openModal('../media/9428f962-9bb2-4913-be85-ec03ffb2a2fc.jpg', 'AI Brand Identity', 'This project focuses on neon-futuristic branding.')">
+                <img src="../media/9428f962-9bb2-4913-be85-ec03ff_thumb.jpg" alt="Project 1">
+                <div class="hover-overlay">
+                    <h3>AI Brand Identity</h3>
+                    <p>View Details</p>
+                </div>
+            </div>
 
-        <div class="gallery">
-            <div
-                class="gallery-item"
-                v-for="item in items"
-                :key="item.id"
-            >
-                <img :src="item.src" :alt="item.title">
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.description }}</p>
+            <div class="gallery-item" onclick="openModal('../media/09c40290-36c3-4c1a-9b96-ee1d882f0995.jpg', 'Cyber UI Design', 'Interactive dashboard with glassmorphism effects.')">
+                <img src="../media/09c40290-36c3-4c1a-9b96-ee1d88_thumb.jpg" alt="Project 2">
+                <div class="hover-overlay">
+                    <h3>Cyber UI Design</h3>
+                    <p>View Details</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="zoomModal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" class="modal-img">
+            <div class="modal-text">
+                <h2 id="modalTitle" class="gradient-text"></h2>
+                <p id="modalDesc"></p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- GUESTBOOK -->
-    <section class="interactions">
-        <h2>Guestbook</h2>
-
-        <form @submit.prevent="addMessage" class="guestbook">
-            <input
-                v-model="newMessage.name"
-                type="text"
-                placeholder="Your Name"
-                required
-            >
-
-            <select v-model="newMessage.rating" required>
-                <option disabled value="">Rating</option>
-                <option v-for="n in 5" :key="n" :value="n">
-                    {{ n }}
-                </option>
-            </select>
-
-            <textarea
-                v-model="newMessage.message"
-                placeholder="Your Message"
-                required
-            ></textarea>
-
-            <button type="submit">Submit</button>
-        </form>
-
-        <div class="messages">
-            <div class="message" v-for="msg in messages" :key="msg.id">
-                <strong>{{ msg.name }}</strong>
-                ({{ generateStars(msg.rating) }})
-                <p>{{ msg.message }}</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 My Name</p>
-    </footer>
-
-</div>
-
-<!-- Vue 3 -->
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="../JS/main.js" defer></script>
-
+    <script src="../JS/main.js"></script>
 </body>
 </html>
