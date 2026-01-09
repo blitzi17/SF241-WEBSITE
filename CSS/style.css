@@ -1,4 +1,12 @@
-/* --- BASE SETUP --- */
+/* --- ROOT VARIABLES --- */
+:root {
+    --gold: #d4af37;
+    --cream: #fdf5e6;
+    --dark-bg: rgba(15, 12, 10, 0.98);
+    --paper: #fdfaf6; /* The Rectangle Scroll & Modal Color */
+}
+
+/* --- RESET & BASE --- */
 * { 
     margin: 0; 
     padding: 0; 
@@ -13,9 +21,17 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    color: var(--cream);
 }
 
-/* --- HEADER PART (Shadow added, Dropdown fixed) --- */
+.bg-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 0%, rgba(0,0,0,0.85) 100%);
+    z-index: -1;
+}
+
+/* --- HEADER & NAVIGATION --- */
 .nav-container { 
     display: flex; 
     justify-content: center; 
@@ -32,49 +48,51 @@ body {
 
 .nav-links a { 
     text-decoration: none; 
-    color: #fdf5e6; 
+    color: var(--cream); 
     font-size: 16px; 
     letter-spacing: 3px; 
     text-transform: uppercase;
     font-weight: bold;
-    /* Added shadow for better visibility */
+    /* Visible shadow for header text */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); 
 }
 
-/* FIXED DROPDOWN (Stays under the word) */
-.dropdown { 
-    position: relative; 
-}
+/* DROPDOWN - Anchored to the word */
+.dropdown { position: relative; }
 
 .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0; /* Align to the start of the word */
-    background: rgba(15, 12, 10, 0.95);
+    left: 0; 
+    background: var(--dark-bg);
     min-width: 180px;
     padding: 10px 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    list-style: none; /* Removed the little circles */
+    list-style: none; /* No circles */
 }
 
-.dropdown:hover .dropdown-content { 
-    display: block; 
-}
+.dropdown:hover .dropdown-content { display: block; }
 
 .dropdown-content li a {
     padding: 12px 20px;
     font-size: 13px;
-    text-shadow: none; /* Clean look for menu items */
+    text-shadow: none;
 }
 
-/* --- CENTERED HERO SECTION --- */
-.main-display {
+/* --- HERO SECTION (CENTERED) --- */
+.hero {
     flex: 1;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    padding-bottom: 100px; /* Moves everything slightly higher */
+}
+
+.main-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .interactive-wrapper {
@@ -82,13 +100,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 900px; /* Bigger container */
+    width: 900px;
     height: 700px;
 }
 
-/* BIGGER FRAME */
+/* LARGE PORTRAIT */
 .portrait-box {
-    width: 700px; /* Significantly bigger */
+    width: 700px;
     z-index: 20;
     transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -102,31 +120,26 @@ body {
 /* LANDSCAPE SCROLL */
 .scroll-area {
     position: absolute;
-    width: 600px; /* Landscape Rectangle */
+    width: 600px; 
     height: 380px;  
-    background: #fdfaf6;
+    background: var(--paper);
     padding: 40px;
     opacity: 0;
     z-index: 10;
     transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     border-radius: 4px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Starts hidden behind frame */
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* --- HOVER ANIMATION (Stays on screen) --- */
-.interactive-wrapper:hover .portrait-box {
-    transform: translateX(250px); /* Slides right */
-}
-
+/* HOVER ANIMATION */
+.interactive-wrapper:hover .portrait-box { transform: translateX(250px); }
 .interactive-wrapper:hover .scroll-area {
     opacity: 1;
-    transform: translate(-105%, -50%); /* Slides left */
+    transform: translate(-105%, -50%); 
 }
 
-/* TYPEWRITER TEXT */
 .ink-text {
     font-family: 'Courier New', monospace;
     font-size: 19px;
@@ -135,23 +148,95 @@ body {
     font-weight: bold;
 }
 
-/* --- MOBILE AUTO-ADJUST --- */
+/* --- GALLERY SECTION --- */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 80px 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-item {
+    position: relative;
+    width: 350px;
+    height: 250px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.hover-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-item:hover .hover-overlay { opacity: 1; }
+
+.hover-overlay h3 { color: var(--gold); letter-spacing: 2px; margin-bottom: 5px; }
+.hover-overlay p { font-size: 12px; color: white; text-transform: uppercase; }
+
+/* --- MODAL POPUP (Matches Scroll) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--paper); /* Same as Scroll */
+    width: 90%;
+    max-width: 800px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    animation: zoomIn 0.3s ease;
+}
+
+.modal-text { padding: 30px; color: #2b1d10; }
+.modal-text h2 { margin-bottom: 15px; color: #2b1d10; font-family: 'Poppins', sans-serif; }
+.modal-text p { line-height: 1.6; font-family: 'Courier New', monospace; font-weight: bold; }
+
+#modalImg { width: 100%; max-height: 450px; object-fit: cover; }
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 35px;
+    cursor: pointer;
+    color: #2b1d10;
+    z-index: 100;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 1000px) {
-    .interactive-wrapper {
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-    }
-    .portrait-box {
-        width: 80%;
-        transform: none !important;
-    }
-    .scroll-area {
-        position: relative;
-        width: 90%;
-        opacity: 1;
-        transform: none !important;
-        left: 0; top: 0;
-        margin-top: 20px;
-    }
+    .interactive-wrapper { flex-direction: column; width: 100%; height: auto; }
+    .portrait-box { width: 90%; transform: none !important; }
+    .scroll-area { position: relative; width: 95%; opacity: 1; transform: none !important; left: 0; top: 0; margin-top: 20px; }
+    .gallery-item { width: 100%; }
 }
