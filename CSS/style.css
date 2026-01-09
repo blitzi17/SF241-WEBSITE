@@ -1,133 +1,205 @@
+/* --- VARIABLES & BASE --- */
 :root {
-    --cyan: #00d2ff;
-    --pink: #ff0080;
-    --dark-purple: #16132b;
+    --gold: #d4af37;
+    --cream: #fdf5e6;
+    --dark-overlay: rgba(0, 0, 0, 0.7);
+    --font-main: 'Poppins', sans-serif;
+    --font-serif: 'Playfair Display', serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body {
-    font-family: 'Poppins', sans-serif;
-    color: white;
+    font-family: var(--font-main);
     background: url('../media/BG.png') no-repeat center center fixed;
     background-size: cover;
+    color: white;
     height: 100vh;
-    overflow: hidden; /* Prevents scrollbars for a clean app-like look */
+    overflow: hidden; /* Keeps the layout clean and app-like */
 }
 
+/* DARKENING OVERLAY FOR BACKGROUND IMAGE */
 .bg-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.65); /* Dims background to make text pop */
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
     z-index: -1;
 }
 
-/* --- NAVIGATION --- */
+/* --- CENTERED NAVIGATION (NO LOGO) --- */
 .nav-container {
     display: flex;
-    justify-content: space-between;
-    padding: 25px 80px;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
+    justify-content: center; /* Centers the menu perfectly */
+    padding: 40px 0;
+    width: 100%;
 }
 
-.nav-links { display: flex; list-style: none; gap: 40px; }
-.nav-links a { text-decoration: none; color: white; font-weight: 500; transition: 0.3s; }
-.nav-links a:hover { color: var(--cyan); }
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 40px; 
+    align-items: center;
+}
 
-/* Dropdowns */
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--cream); 
+    font-size: 13px; 
+    letter-spacing: 3px; 
+    font-weight: 300;
+    text-transform: uppercase;
+    transition: 0.4s ease;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* DROPDOWN MENU */
 .dropdown { position: relative; }
+
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
-    background: var(--dark-purple);
+    background: rgba(11, 9, 10, 0.95);
     min-width: 160px;
-    border: 1px solid var(--cyan);
-    border-radius: 8px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%); /* Centers dropdown under the parent link */
+    border: 1px solid rgba(214, 175, 55, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    z-index: 100;
     padding: 10px 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-.dropdown-content a { padding: 10px 20px; display: block; font-size: 14px; }
+
+.dropdown-content a { 
+    padding: 12px 20px; 
+    display: block; 
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
 .dropdown:hover .dropdown-content { display: block; }
 
-/* --- HERO TEXT & GREETINGS --- */
+/* --- HERO SECTION & GREETING LAYER --- */
 .hero {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     height: 80vh;
-    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 50px;
 }
 
-.greeting-box { display: flex; gap: 15px; margin-bottom: 10px; }
-.sliding-text {
-    font-size: 14px;
-    color: var(--cyan);
-    font-weight: bold;
-    animation: sideBySide 2s ease-in-out infinite alternate;
+.greeting-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-@keyframes sideBySide {
-    from { transform: translateX(0); opacity: 0.5; }
-    to { transform: translateX(12px); opacity: 1; }
+/* Side-by-side moving greetings */
+.float-text {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    animation: sideToSide 5s ease-in-out infinite alternate;
 }
 
-.main-title { font-size: 4rem; margin-bottom: 10px; }
-.blue-glow { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
-.pink-highlight { color: var(--pink); text-shadow: 0 0 10px var(--pink); }
+.t1 { top: 65%; left: 10%; }
+.t2 { top: 75%; right: 15%; }
+.t3 { top: 82%; left: 18%; }
+.t4 { top: 88%; right: 8%; }
 
-/* --- INTERACTIVE FRAME --- */
+@keyframes sideToSide {
+    from { transform: translateX(0); opacity: 0.1; }
+    to { transform: translateX(40px); opacity: 0.5; }
+}
+
+.main-title {
+    font-family: var(--font-serif);
+    font-size: 6.5rem;
+    color: var(--cream);
+    z-index: 10;
+    margin-bottom: -50px; /* Overlaps slightly with the frame */
+    text-align: center;
+}
+
+.gold-script {
+    color: var(--gold);
+    font-style: italic;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+}
+
+/* --- INTERACTIVE FRAME (CENTERED) --- */
 .interactive-frame {
     position: relative;
-    width: 500px;
-    height: 400px;
+    width: 380px;
+    height: 480px;
     display: flex;
+    justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 
 .portrait-box {
-    position: absolute;
-    right: 0;
-    width: 280px;
-    height: 380px;
-    z-index: 5;
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 100%;
+    height: 100%;
+    z-index: 30; /* Stays above the sliding scroll */
+    cursor: pointer;
 }
 
 .portrait-img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-    border: 2px solid var(--cyan);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Preserves the Gold Frame shape */
 }
 
+/* THE SLIDING SCROLL (Slides out to the LEFT) */
 .scroll-container {
     position: absolute;
-    left: 20px;
-    width: 0; /* Hidden initially */
+    right: 50%; /* Starts hidden behind the frame */
+    width: 0;
     height: 320px;
     overflow: hidden;
-    transition: width 0.8s ease;
-    z-index: 2;
-    background: #f4f1ea; /* Paper effect */
-    border-radius: 10px;
+    transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 20;
+    background: #f4f1ea; /* Fallback paper color */
+    border-radius: 5px;
 }
 
-.scroll-bg { width: 420px; height: 100%; object-fit: cover; opacity: 0.8; }
+.scroll-bg {
+    width: 480px; /* Width of the actual scroll image */
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
 
+/* TYPEWRITER TEXT ON SCROLL */
 .ink-text {
     position: absolute;
-    top: 40px; left: 30px; right: 30px;
-    color: #332b00;
+    top: 50px; 
+    left: 70px; 
+    right: 50px;
+    color: #332b00; /* Dark ink color */
     font-family: 'Courier New', monospace;
     font-size: 15px;
     font-weight: bold;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
-/* Hover Trigger */
-.interactive-frame:hover .portrait-box { transform: translateX(220px); }
-.interactive-frame:hover .scroll-container { width: 420px; }
+/* --- HOVER INTERACTION --- */
+.interactive-frame:hover .scroll-container {
+    width: 480px;   /* Expands to show the scroll */
+    right: 105%;    /* Moves it fully out to the left */
+}
