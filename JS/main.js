@@ -1,23 +1,26 @@
-// Function to open the Zoom Window
-function openModal(imgSrc, title, desc) {
-    const modal = document.getElementById('zoomModal');
-    
-    document.getElementById('modalImg').src = imgSrc;
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalDesc').innerText = desc;
-    
-    modal.style.display = 'flex';
-}
+const trigger = document.getElementById('frameTrigger');
+const typewriter = document.getElementById('typewriter');
+const textToType = "Welcome to my digital space! I am a passionate innovator dedicated to pushing the boundaries of what is possible in design and code...";
 
-// Function to close the Zoom Window
-function closeModal() {
-    document.getElementById('zoomModal').style.display = 'none';
-}
+let i = 0;
+let isTyping = false;
 
-// Close modal if user clicks outside the content box
-window.onclick = function(event) {
-    const modal = document.getElementById('zoomModal');
-    if (event.target == modal) {
-        closeModal();
+trigger.addEventListener('mouseenter', () => {
+    isTyping = true;
+    i = 0;
+    typewriter.innerHTML = "";
+    typeEffect();
+});
+
+trigger.addEventListener('mouseleave', () => {
+    isTyping = false;
+    typewriter.innerHTML = ""; // Clears text on exit
+});
+
+function typeEffect() {
+    if (isTyping && i < textToType.length) {
+        typewriter.innerHTML += textToType.charAt(i);
+        i++;
+        setTimeout(typeEffect, 40); // Controls typing speed
     }
 }
