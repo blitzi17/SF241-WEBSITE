@@ -25,6 +25,25 @@ function typeEffect() {
         setTimeout(typeEffect, 40);
     }
 }
+/* --- MUSIC PLAYER LOGIC (INSERTED HERE) --- */
+const music = document.getElementById('bgMusic');
+const playBtn = document.getElementById('playBtn');
+
+if (playBtn) {
+    playBtn.addEventListener('click', () => {
+        if (music.paused) {
+            music.play();
+            playBtn.innerText = "⏸ PAUSE";
+            playBtn.classList.remove('pulsing'); // Stops the glowing pulse when playing
+            playBtn.style.background = "#d4af37"; // Changes color to gold
+        } else {
+            music.pause();
+            playBtn.innerText = "▶ PLAY";
+            playBtn.classList.add('pulsing'); // Starts pulsing again when paused
+            playBtn.style.background = "#2b1d10"; // Changes back to ink
+        }
+    });
+}
 
 /* --- GALLERY MODAL FUNCTIONS --- */
 function openModal(imgSrc, title, desc) {
@@ -72,4 +91,5 @@ document.addEventListener('keydown', (e) => {
         closeModal();
     }
 });
+
 
