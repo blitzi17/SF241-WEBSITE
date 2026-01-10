@@ -15,26 +15,30 @@ body {
     overflow-x: hidden;
 }
 /* --- HEADER & NAVIGATION --- */
+/* --- HEADER & NAVIGATION --- */
 header {
     width: 100%;
-    position: absolute; /* Ensures it stays at the top without pushing content */
+    position: absolute; 
     top: 0;
     left: 0;
+    /* ADD THESE TWO LINES TO FORCE CENTER */
+    display: flex;
+    justify-content: center;
 }
 
 .nav-container { 
     display: flex; 
-    justify-content: center; /* THIS KEEPS THE MENU CENTERED */
+    justify-content: center; 
     align-items: center;
     padding: 40px 0;
-    width: 100%;
+    /* Changed width to auto so it hugs the links and centers properly */
+    width: auto; 
     z-index: 1000; 
 }
 
 .nav-links { 
     display: flex; 
     list-style: none; 
-    /* Added more spacing between items as requested */
     gap: 100px; 
     margin: 0;
     padding: 0;
