@@ -390,6 +390,7 @@ header {
 .reveal-text {
     overflow: hidden;
     display: block;
+    margin-bottom: 60px;
 }
 
 /* Individual character styling */
