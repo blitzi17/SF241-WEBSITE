@@ -214,40 +214,6 @@ header {
     transform: scale(1.05);
     animation: none; /* Stops pulsing when you hover over it */
 }
-/* --- CONTAINER TO PREVENT GLITCHING --- */
-.hands-section-container {
-    width: 100%;
-    height: 300px; /* Gives the hands enough room to move */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -20px; /* Pulls it up closer to the scroll */
-    position: relative;
-}
-
-.hands-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
-}
-
-/* --- THE HANDS --- */
-.hand {
-    width: 180px; /* Increased size so they aren't small */
-    position: absolute;
-    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth movement */
-    z-index: 5;
-}
-
-/* Initial "Closed" Positions */
-.left-hand { left: 40%; transform: translateX(0); }
-.right-hand { right: 40%; transform: translateX(0); }
-
-/* "Open" Positions triggered by JS */
-.hands-wrapper.active .left-hand { left: 15%; transform: rotate(15deg); }
-.hands-wrapper.active .right-hand { right: 15%; transform: rotate(-15deg); }
 
 /* --- THE ABOUT ME TITLE (BIG & POP) --- */
 .gallery-title {
@@ -328,3 +294,87 @@ header {
 .modal-text { padding: 30px; color: var(--ink); }
 #modalImg { width: 100%; max-height: 450px; object-fit: cover; }
 .close-btn { position: absolute; top: 10px; right: 20px; font-size: 35px; cursor: pointer; color: var(--ink); }
+
+/* --- GALLERY SUBTITLE --- */
+.gallery-subtitle {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: #fdf5e6;
+    font-size: 50px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* --- THE SCROLL TRACK --- */
+.infinite-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.scroll-track {
+    display: flex;
+    /* (300px width + 30px margin) * 10 cards */
+    width: calc(330px * 10); 
+    animation: scrollLinear 25s linear infinite;
+}
+
+.scroll-track:hover {
+    animation-play-state: paused;
+}
+
+/* --- THE INDIVIDUAL CARDS --- */
+.scroll-card {
+    width: 300px;
+    height: 400px;
+    margin: 0 15px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    transition: transform 0.4s ease;
+}
+
+.scroll-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- THE DESCRIPTION OVERLAY --- */
+.card-overlay {
+    position: absolute;
+    bottom: -100%; /* Hidden by default */
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: rgba(43, 29, 16, 0.85); /* Dark ink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: bottom 0.4s ease;
+}
+
+.card-overlay p {
+    color: #fdf5e6;
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+}
+
+/* HOVER STATES */
+.scroll-card:hover .card-overlay {
+    bottom: 0;
+}
+
+.scroll-card:hover {
+    transform: scale(1.03);
+}
+
+/* --- ANIMATION LOGIC --- */
+@keyframes scrollLinear {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-330px * 5)); } /* Reset after 5 cards */
+}
+
+
