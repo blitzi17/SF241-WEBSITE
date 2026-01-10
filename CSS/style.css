@@ -153,11 +153,12 @@ header {
 }
 
 .ink-text {
-    font-family: 'Courier New', monospace;
-    font-size: 18px;
-    color: var(--ink);
-    line-height: 1.6;
-    font-weight: bold;
+    font-family: 'Dancing Script', cursive; /* Beautiful cursive font */
+    font-size: 24px; /* Increased for better readability */
+    color: #2b1d10;
+    line-height: 1.4;
+    font-weight: 700; /* Bolded as requested to stand out */
+    min-height: 150px; /* Keeps the space steady while typing */
 }
 /* --- MUSIC PLAYER STYLING (BELOW TEXT) --- */
 .music-player {
