@@ -215,25 +215,26 @@ header {
     animation: none; /* Stops pulsing when you hover over it */
 }
 
-/* This now controls BOTH "About Me" and "Gallery" */
+/* --- UPDATED TITLE STYLE --- */
 .gallery-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 100px; /* Big and elegant */
+    font-size: 100px;
     color: #fdf5e6;
     text-align: center;
-    margin-top: 100px;    /* Space above the title */
-    margin-bottom: 80px;  /* EXTRA spacing between title and gallery */
+    margin-top: 100px;
+    margin-bottom: 80px;
     text-shadow: 2px 4px 15px rgba(0,0,0,0.8);
-}
-/* Individual character styling - This is what creates the "Hello, you!" effect */
-.reveal-text span {
-    display: inline-block;
-    opacity: 0;
-    filter: blur(12px);
-    transform: translateY(30px) scale(0.8);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    
+    /* FIX: Prevents clipping of tall cursive letters */
+    line-height: 1.4; 
+    padding: 20px 0; 
 }
 
+.reveal-text {
+    /* FIX: Change from 'hidden' to 'visible' so blurs/tails aren't cut */
+    overflow: visible; 
+    display: block;
+}
 /* Active state triggered on scroll */
 .reveal-text.active span {
     opacity: 1;
@@ -390,26 +391,19 @@ header {
 .reveal-text span {
     display: inline-block;
     opacity: 0;
-    filter: blur(10px);
-    transform: translateY(20px);
+    filter: blur(12px);
+    transform: translateY(30px) scale(0.8);
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    
+    /* FIX: Ensures the blur doesn't hit the edge of the span */
+    padding: 0 5px; 
 }
 
-/* When the 'active' class is added via scroll */
+/* Active state */
 .reveal-text.active span {
     opacity: 1;
     filter: blur(0);
-    transform: translateY(0);
-}
-
-/* Specific styling for Gallery Title to match About Me */
-.gallery-subtitle {
-    font-family: 'Dancing Script', cursive;
-    font-size: 80px;
-    color: #fdf5e6;
-    text-align: center;
-    margin-top: 100px;
-    text-shadow: 2px 4px 15px rgba(0,0,0,0.8);
+    transform: translateY(0) scale(1);
 }
 
 
