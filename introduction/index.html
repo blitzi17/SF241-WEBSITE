@@ -89,16 +89,16 @@
         </div>
     </section>
 
-    <div id="galleryModal" class="modal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <img id="modalImg" src="" alt="Gallery Image">
-            <div class="modal-text">
-                <h2 id="modalTitle"></h2>
-                <p id="modalDesc"></p>
-            </div>
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content-wrapper">
+        <img id="modal-img" src="" alt="Full View">
+        <div class="modal-text">
+            <h2 id="modal-title"></h2>
+            <p id="modal-desc"></p>
         </div>
     </div>
+</div>
 
     <div class="projects-stack-container">
     <h1 class="gallery-title reveal-text">Projects</h1>
