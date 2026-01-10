@@ -553,3 +553,13 @@ header {
 .scroll-card:hover .card-overlay {
     bottom: 0;
 }
+
+/* This ensures the title lands below your navigation bar */
+#projects-section, #gallery-section, #about-title {
+    scroll-margin-top: 120px; 
+}
+
+/* Makes the move from top to bottom smooth instead of a jump */
+html {
+    scroll-behavior: smooth;
+}
