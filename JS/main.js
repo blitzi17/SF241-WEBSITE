@@ -137,18 +137,6 @@ const textObserver = new IntersectionObserver((entries) => {
 // Start observing each title
 revealTitles.forEach(t => textObserver.observe(t));
 
-// Stacking Model 
-function openModal(imageSrc, title, description) {
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
-    const modalTitle = document.getElementById('modal-title');
-    const modalDesc = document.getElementById('modal-desc');
-
-    modal.style.display = "flex";
-    modalImg.src = imageSrc;
-    modalTitle.textContent = title;
-    modalDesc.textContent = description;
-}
 
 
 
