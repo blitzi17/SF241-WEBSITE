@@ -57,27 +57,36 @@ body {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); 
 }
 
-/* DROPDOWN - Anchored to the word */
-.dropdown { position: relative; }
-
+/* --- UPDATED DROPDOWN STYLING --- */
 .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
     left: 0; 
-    background: var(--dark-bg);
+    /* Changed to match the scroll's paper color */
+    background: #fdfaf6; 
     min-width: 180px;
     padding: 10px 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    list-style: none; /* No circles */
+    /* Added a soft shadow like the scroll */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    list-style: none;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.05);
 }
-
-.dropdown:hover .dropdown-content { display: block; }
 
 .dropdown-content li a {
     padding: 12px 20px;
     font-size: 13px;
-    text-shadow: none;
+    /* Text color changed to match the ink-text of the scroll */
+    color: #2b1d10 !important; 
+    text-shadow: none !important;
+    display: block;
+    font-weight: 600;
+}
+
+.dropdown-content li a:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #d4af37 !important; /* Gold on hover */
 }
 
 /* --- HERO SECTION (CENTERED) --- */
@@ -148,53 +157,51 @@ body {
     font-weight: bold;
 }
 
-/* --- GALLERY SECTION --- */
+/* --- MAXIMIZED GALLERY SECTION --- */
 .gallery-container {
     display: flex;
     justify-content: center;
     gap: 30px;
-    padding: 60px 20px;
+    padding: 80px 20px;
     flex-wrap: wrap;
 }
 
 .gallery-item {
     position: relative;
-    /* This sets the uniform size for every box */
-    width: 350px; 
-    height: 450px; 
+    /* Fixed rectangle size to make them all identical */
+    width: 380px; 
+    height: 500px; 
     cursor: pointer;
-    overflow: hidden; /* Ensures nothing leaks out of the rectangle */
-    border-radius: 8px; /* Optional: smooths the corners slightly */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+    background: #000; /* Black background if image takes time to load */
 }
 
 .gallery-item img {
+    /* These properties MAXIMIZE the image to fill the entire box */
     width: 100%;
     height: 100%;
-    /* This is the magic part: it crops the image to fit the box perfectly */
-    object-fit: cover; 
+    object-fit: cover; /* This crops the edges so the image fits perfectly without stretching */
     display: block;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* --- HOVER EFFECTS --- */
 .hover-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
 }
 
-.gallery-item:hover {
-    transform: translateY(-10px); /* Lifts the box up slightly on hover */
+/* Zoom effect on hover */
+.gallery-item:hover img {
+    transform: scale(1.1);
 }
 
 .gallery-item:hover .hover-overlay {
@@ -202,17 +209,18 @@ body {
 }
 
 .hover-overlay h3 {
-    color: #fdf5e6;
-    letter-spacing: 2px;
+    color: #fdfaf6; /* Matches scroll paper */
+    letter-spacing: 3px;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    font-size: 22px;
 }
 
 .hover-overlay p {
-    font-size: 14px;
-    color: #d4af37; /* Gold color */
-    font-weight: bold;
+    font-size: 12px;
+    color: #d4af37; /* Gold */
     text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 /* --- HOVER EFFECTS --- */
 
