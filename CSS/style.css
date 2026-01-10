@@ -14,14 +14,31 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
+/* --- HEADER & NAVIGATION --- */
+header {
+    width: 100%;
+    position: absolute; /* Ensures it stays at the top without pushing content */
+    top: 0;
+    left: 0;
+}
+
+.nav-container { 
+    display: flex; 
+    justify-content: center; /* THIS KEEPS THE MENU CENTERED */
+    align-items: center;
+    padding: 40px 0;
+    width: 100%;
+    z-index: 1000; 
+}
 
 .nav-links { 
     display: flex; 
     list-style: none; 
-    /* Increased spacing from 50px to 80px */
-    gap: 80px; 
+    /* Added more spacing between items as requested */
+    gap: 100px; 
+    margin: 0;
+    padding: 0;
 }
-
 .nav-links a { 
     text-decoration: none; 
     color: #fdf5e6; 
