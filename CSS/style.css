@@ -221,8 +221,8 @@ header {
     font-size: 100px;
     color: #fdf5e6;
     text-align: center;
-    margin-top: 100px;
-    margin-bottom: 80px;
+    margin-top: 60px;    /* Reduced from 100px */
+    margin-bottom: 40px; /* Reduced from 80px */
     text-shadow: 2px 4px 15px rgba(0,0,0,0.8);
     
     /* FIX: Prevents clipping of tall cursive letters */
@@ -395,32 +395,38 @@ header {
 }
 
 .projects-stack-container {
-    padding: 100px 0;
     width: 100%;
+    padding: 40px 0; /* Reduced from 100px */
 }
 
 .stack-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* This creates the space between cards while scrolling */
-    gap: 10vh; 
+    gap: 40px; /* Reduced from 10vh to make them closer */
 }
 
 .project-card {
     position: sticky;
-    /* Cards will "stick" 150px from the top of the browser */
-    top: 150px; 
+    top: 120px; /* Adjusted to keep cards visible while stacking */
     width: 85%;
-    max-width: 900px;
+    max-width: 850px;
     height: 400px;
     border-radius: 25px;
     padding: 40px;
-    display: flex;
-    /* Higher index cards stay on top */
-    z-index: var(--index); 
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.6);
-    margin-bottom: 200px; /* Crucial for the scroll length */
+    
+    /* AESTHETIC GLASS LOOK */
+    background: rgba(255, 255, 255, 0.08); /* Transparent white */
+    backdrop-filter: blur(15px); /* The "frosted" effect */
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* SOFT GOLD BORDER */
+    border: 1px solid rgba(253, 245, 230, 0.2); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    
+    z-index: var(--index);
+    margin-bottom: 100px; /* REDUCED: Makes the stack feel tighter */
+    transition: transform 0.4s ease;
 }
 
 /* GRADIENTS MATCHING YOUR SCREEN RECORDING */
@@ -433,10 +439,16 @@ header {
     width: 100%;
 }
 
+/* Add a subtle glow to the card content */
 .card-content h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 3rem;
-    margin-bottom: 15px;
+    color: #fdf5e6; /* Matching your title color */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    font-size: 2.5rem;
+}
+
+.card-content p {
+    color: #fdf5e6;
+    opacity: 0.9;
 }
 
 .card-content img {
