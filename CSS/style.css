@@ -215,6 +215,43 @@ header {
     animation: none; /* Stops pulsing when you hover over it */
 }
 
+/* --- ABOUT ME SECTION TITLE --- */
+.gallery-title {
+    /* Use the cursive font we linked in the HTML */
+    font-family: 'Dancing Script', cursive;
+    
+    /* Size and Color */
+    font-size: 60px;
+    color: #fdf5e6; /* Cream color to match your nav links */
+    text-align: center;
+    
+    /* Spacing */
+    margin-top: 100px;  /* Space from the scroll above */
+    margin-bottom: 30px; /* Space before the gallery starts */
+    
+    /* This shadow ensures it is seen even on bright backgrounds */
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
+    
+    /* Smooth transition for the hover effect */
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+/* --- HOVER GLOW EFFECT --- */
+.gallery-title:hover {
+    color: #ffffff; /* Turns white when hovering */
+    
+    /* Combined Glow: A mix of white and gold light */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8), 
+        0 0 20px rgba(212, 175, 55, 0.6), 
+        0 0 30px rgba(212, 175, 55, 0.4),
+        2px 4px 10px rgba(0, 0, 0, 0.9); /* Keeps the dark shadow for depth */
+        
+    /* Subtle lift effect */
+    transform: translateY(-5px) scale(1.02);
+}
+
 /* --- GALLERY FIX (MAXIMIZED & RECTANGLE) --- */
 .gallery-container {
     display: flex;
