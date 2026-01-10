@@ -42,6 +42,19 @@ function openModal(imgSrc, title, desc) {
 
 function closeModal() {
     document.getElementById('galleryModal').style.display = "none";
+} 
+function openHobbies() {
+    openModal('../media/HOB.jpg', 'Hobbies', 'My hobbies are too many to count but i really love creating bouquets in different ways, i wish to create things that makes me happy.');
+}
+
+function openGoals() {
+    // Make sure 'plane.jpg' matches your actual airplane file name
+    openModal('../media/GOAL.jpg', 'Goals', 'I wish to create things that makes me happy and reach new heights in my creative journey.');
+}
+
+function openEducation() {
+    // Make sure 'education.jpg' matches your actual portrait file name
+    openModal('../media/EDUC.png', 'Education', 'Pursuing academic excellence and technical skills to build a professional future in digital arts.');
 }
 
 /* --- GLOBAL LISTENERS --- */
@@ -59,3 +72,4 @@ document.addEventListener('keydown', (e) => {
         closeModal();
     }
 });
+
