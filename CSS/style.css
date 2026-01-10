@@ -214,92 +214,57 @@ header {
     transform: scale(1.05);
     animation: none; /* Stops pulsing when you hover over it */
 }
-/* --- HANDS CONTAINER --- */
+/* --- CONTAINER TO PREVENT GLITCHING --- */
+.hands-section-container {
+    width: 100%;
+    height: 300px; /* Gives the hands enough room to move */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px; /* Pulls it up closer to the scroll */
+    position: relative;
+}
+
 .hands-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     width: 100%;
-    margin-top: -40px; /* Pulls it up as you requested */
-    overflow: hidden;
 }
 
+/* --- THE HANDS --- */
 .hand {
-    width: 150px; /* Adjust size based on your image */
-    height: auto;
+    width: 180px; /* Increased size so they aren't small */
     position: absolute;
-    transition: all 0.8s ease-in-out;
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth movement */
     z-index: 5;
 }
 
-/* Position the hands */
-.left-hand {
-    left: 20%;
-    transform: rotate(10deg);
-    animation: open-left 4s ease-in-out infinite alternate;
-}
+/* Initial "Closed" Positions */
+.left-hand { left: 40%; transform: translateX(0); }
+.right-hand { right: 40%; transform: translateX(0); }
 
-.right-hand {
-    right: 20%;
-    transform: rotate(-10deg);
-    animation: open-right 4s ease-in-out infinite alternate;
-}
-/* Hands start close together */
-.left-hand { left: 38%; }
-.right-hand { right: 38%; }
+/* "Open" Positions triggered by JS */
+.hands-wrapper.active .left-hand { left: 15%; transform: rotate(15deg); }
+.hands-wrapper.active .right-hand { right: 15%; transform: rotate(-15deg); }
 
-/* Hands move away when the container is hovered */
-.hands-wrapper:hover .left-hand {
-    left: 20%;
-    transform: rotate(15deg);
-}
-
-.hands-wrapper:hover .right-hand {
-    right: 20%;
-    transform: rotate(-15deg);
-}
-/* --- UPDATED ABOUT ME TITLE --- */
+/* --- THE ABOUT ME TITLE (BIG & POP) --- */
 .gallery-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 150px;
+    font-size: 100px; /* Big and impactful */
     color: #fdf5e6;
-    text-align: center;
-    
-    /* REDUCED THIS VALUE to move it up */
-    margin-top: 10px; 
-    margin-bottom: 10px;
-    
-    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
-    transition: all 0.5s ease-in-out;
-    cursor: pointer;
+    text-shadow: 2px 4px 15px rgba(0,0,0,0.8);
+    opacity: 0;
+    transform: scale(0.5); /* Starts small */
+    transition: all 0.8s delay 0.4s ease; /* Waits for hands to move first */
 }
 
-/* --- UPDATED ABOUT ME TITLE (FOR HANDS EFFECT) --- */
-.gallery-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 60px; /* Reduced from 150px to fit between hands */
-    color: #fdf5e6;
-    text-align: center;
-    
-    /* We use 0 margins here because the .hands-wrapper container 
-       now controls the spacing for the whole group */
-    margin: 0; 
-    
-    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
-    transition: all 0.5s ease-in-out;
-    cursor: pointer;
-    
-    position: relative;
-    z-index: 1; /* Keeps text behind the hands or neatly centered */
+/* The Pop-up effect */
+.gallery-title.active {
+    opacity: 1;
+    transform: scale(1);
 }
-
-/* Keep your hover glow effect here too! */
-.gallery-title:hover {
-    color: #ffffff;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(212, 175, 55, 0.7);
-}
-
 /* --- GALLERY FIX (MAXIMIZED & RECTANGLE) --- */
 .gallery-container {
     display: flex;
