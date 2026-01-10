@@ -214,7 +214,51 @@ header {
     transform: scale(1.05);
     animation: none; /* Stops pulsing when you hover over it */
 }
+/* --- HANDS CONTAINER --- */
+.hands-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-top: -40px; /* Pulls it up as you requested */
+    overflow: hidden;
+}
 
+.hand {
+    width: 150px; /* Adjust size based on your image */
+    height: auto;
+    position: absolute;
+    transition: all 0.8s ease-in-out;
+    z-index: 5;
+}
+
+/* Position the hands */
+.left-hand {
+    left: 20%;
+    transform: rotate(10deg);
+    animation: open-left 4s ease-in-out infinite alternate;
+}
+
+.right-hand {
+    right: 20%;
+    transform: rotate(-10deg);
+    animation: open-right 4s ease-in-out infinite alternate;
+}
+/* Hands start close together */
+.left-hand { left: 38%; }
+.right-hand { right: 38%; }
+
+/* Hands move away when the container is hovered */
+.hands-wrapper:hover .left-hand {
+    left: 20%;
+    transform: rotate(15deg);
+}
+
+.hands-wrapper:hover .right-hand {
+    right: 20%;
+    transform: rotate(-15deg);
+}
 /* --- UPDATED ABOUT ME TITLE --- */
 .gallery-title {
     font-family: 'Dancing Script', cursive;
@@ -231,19 +275,29 @@ header {
     cursor: pointer;
 }
 
-.gallery-title:hover {
-    color: #ffffff;
-    text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.8), 
-        0 0 20px rgba(212, 175, 55, 0.6), 
-        2px 4px 10px rgba(0, 0, 0, 0.9);
-    transform: translateY(-5px) scale(1.02);
+/* --- UPDATED ABOUT ME TITLE (FOR HANDS EFFECT) --- */
+.gallery-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 60px; /* Reduced from 150px to fit between hands */
+    color: #fdf5e6;
+    text-align: center;
+    
+    /* We use 0 margins here because the .hands-wrapper container 
+       now controls the spacing for the whole group */
+    margin: 0; 
+    
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    
+    position: relative;
+    z-index: 1; /* Keeps text behind the hands or neatly centered */
 }
 
-/* --- REDUCE GALLERY TOP MARGIN --- */
-.gallery-container {
-    margin-top: 0px; /* Ensures the gallery stays close to the title */
-    padding-top: 0px;
+/* Keep your hover glow effect here too! */
+.gallery-title:hover {
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(212, 175, 55, 0.7);
 }
 
 /* --- GALLERY FIX (MAXIMIZED & RECTANGLE) --- */
