@@ -563,3 +563,94 @@ header {
 html {
     scroll-behavior: smooth;
 }
+
+/* --- FOOTER STYLING --- */
+.main-footer {
+    background-color: var(--ink); /* Using your ink color */
+    color: var(--paper); /* Using your light paper color for text */
+    padding: 60px 20px 20px 20px;
+    margin-top: 100px;
+    border-top: 2px solid var(--gold); /* Gold line at the top */
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.dancing-logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.footer-section ul li a {
+    color: var(--paper);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--gold);
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: var(--ink);
+    background: var(--paper);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background: var(--gold);
+    transform: translateY(-3px);
+}
+
+/* BOTTOM BAR */
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(253, 250, 246, 0.1);
+    font-size: 12px;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
