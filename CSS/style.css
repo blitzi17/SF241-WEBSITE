@@ -229,23 +229,22 @@ header {
     line-height: 1.4; 
     padding: 20px 0; 
 }
-/* --- GALLERY FIX (MAXIMIZED & RECTANGLE) --- */
 .gallery-container {
     display: flex;
     justify-content: center;
     gap: 30px;
-    padding: 80px 20px;
-    flex-wrap: wrap;
+    padding: 20px;
+    flex-wrap: wrap; /* Keeps them side-by-side like before */
 }
 
 .gallery-item {
-    position: relative; /* REQUIRED to contain the absolute overlay */
-    overflow: hidden;    /* REQUIRED to hide the overlay when it's at -100% */
+    position: relative;
+    width: 300px;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden; /* Keeps the overlay inside the frame */
     cursor: pointer;
-    border-radius: 15px; /* Matches your aesthetic */
-    transition: transform 0.3s ease;
 }
-
 .gallery-item img {
     width: 100%;
     height: 100%;
@@ -253,22 +252,43 @@ header {
     display: block;
 }
 
+/* FIX THE OVERLAY (Match 'hover-overlay' from your HTML) */
 .hover-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark aesthetic tint */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    
+    /* Animation: Fade in/out */
+    opacity: 0; 
     transition: opacity 0.3s ease;
+    
+    /* CRITICAL: Allows clicks to go THROUGH to the gallery-item */
+    pointer-events: none; 
+    z-index: 2;
+}
+/* Show the overlay when hovering the item */
+.gallery-item:hover .hover-overlay {
+    opacity: 1;
 }
 
-.gallery-item:hover .hover-overlay { opacity: 1; }
+/* Style the text inside the overlay */
+.hover-overlay h3 {
+    color: #fdf5e6;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
 
-.hover-overlay h3 { color: #fff; letter-spacing: 2px; margin-bottom: 5px; }
-.hover-overlay p { font-size: 13px; color: var(--gold); font-weight: bold; }
+.hover-overlay p {
+    color: #fdf5e6;
+    font-size: 16px;
+}
 
 /* --- MODAL --- */
 .modal {
