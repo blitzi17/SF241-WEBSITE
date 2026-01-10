@@ -40,10 +40,22 @@
 <main class="hero">
         <div class="main-display">
             <div class="interactive-wrapper" id="frameTrigger">
-                <div class="scroll-area">
-                    <div id="typewriter" class="ink-text"></div>
-                </div>
-
+               <div class="scroll-area">
+    <div class="music-player">
+        <img src="../media/album-art.jpg" alt="Song Art" class="song-art">
+        <div class="song-details">
+            <p class="song-name"><b>YOUR SONG TITLE</b></p>
+            <p class="artist-name">Artist Name</p>
+            <button id="playBtn" class="play-button">▶ PLAY</button>
+        </div>
+    </div>
+    
+    <div id="typewriter" class="ink-text"></div>
+    
+    <audio id="bgMusic" loop>
+        <source src="../media/music.mp3" type="audio/mpeg">
+    </audio>
+</div>
                 <div class="portrait-box">
                     <img src="../media/MAIN PIC.png" alt="Karol Joy" class="portrait-img">
                 </div>
