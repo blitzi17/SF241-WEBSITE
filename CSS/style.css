@@ -215,21 +215,31 @@ header {
     animation: none; /* Stops pulsing when you hover over it */
 }
 
-/* --- THE ABOUT ME TITLE (BIG & POP) --- */
+/* --- THE ABOUT ME TITLE STYLE --- */
 .gallery-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 100px; /* Big and impactful */
+    font-size: 100px; /* Big and elegant */
     color: #fdf5e6;
+    text-align: center;
+    margin-top: 50px;
     text-shadow: 2px 4px 15px rgba(0,0,0,0.8);
-    opacity: 0;
-    transform: scale(0.5); /* Starts small */
-    transition: all 0.8s delay 0.4s ease; /* Waits for hands to move first */
+    /* Remove the opacity: 0 and transform: scale here so the letters can control it */
 }
 
-/* The Pop-up effect */
-.gallery-title.active {
+/* Individual character styling - This is what creates the "Hello, you!" effect */
+.reveal-text span {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(30px) scale(0.8);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Active state triggered on scroll */
+.reveal-text.active span {
     opacity: 1;
-    transform: scale(1);
+    filter: blur(0);
+    transform: translateY(0) scale(1);
 }
 /* --- GALLERY FIX (MAXIMIZED & RECTANGLE) --- */
 .gallery-container {
@@ -375,6 +385,37 @@ header {
 @keyframes scrollLinear {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-330px * 5)); } /* Reset after 5 cards */
+}
+
+.reveal-text {
+    overflow: hidden;
+    display: block;
+}
+
+/* Individual character styling */
+.reveal-text span {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* When the 'active' class is added via scroll */
+.reveal-text.active span {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+/* Specific styling for Gallery Title to match About Me */
+.gallery-subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 80px;
+    color: #fdf5e6;
+    text-align: center;
+    margin-top: 100px;
+    text-shadow: 2px 4px 15px rgba(0,0,0,0.8);
 }
 
 
