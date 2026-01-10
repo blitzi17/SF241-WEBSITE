@@ -15,28 +15,33 @@ body {
     overflow-x: hidden;
 }
 
-/* --- HEADER & NAVIGATION --- */
-.nav-container { 
-    display: flex; 
-    justify-content: center; 
-    padding: 40px 0;
-    z-index: 1000; 
-    position: relative;
-}
-
 .nav-links { 
     display: flex; 
     list-style: none; 
-    gap: 50px; 
+    /* Increased spacing from 50px to 80px */
+    gap: 80px; 
 }
 
 .nav-links a { 
     text-decoration: none; 
     color: #fdf5e6; 
     font-size: 16px; 
-    letter-spacing: 2px;
+    letter-spacing: 3px; 
+    text-transform: uppercase;
     font-weight: bold;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); 
+    /* Clean text shadow for depth */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); 
+    transition: all 0.3s ease; /* Smooth transition for the hover glow */
+}
+/* --- HOVER GLOW EFFECT --- */
+.nav-links a:hover {
+    color: #fff; /* Brighten text on hover */
+    /* Intense glow effect using multiple shadows */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8), 
+        0 0 20px rgba(212, 175, 55, 0.6), 
+        2px 2px 8px rgba(0, 0, 0, 0.9);
+    transform: translateY(-2px); /* Slight lift for interactivity */
 }
 
 /* --- THE DROPDOWN FIX --- */
