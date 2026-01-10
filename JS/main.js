@@ -92,30 +92,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Function to handle the Scroll Reveal for Hands
-const observerOptions = {
-    threshold: 0.5 // Triggers when 50% of the section is visible
-};
 
-const handsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const hands = document.getElementById('handsTrigger');
-        const title = document.querySelector('.gallery-title');
-
-        if (entry.isIntersecting) {
-            // SCROLL DOWN: Open hands and pop up title
-            hands.classList.add('active');
-            title.classList.add('active');
-        } else {
-            // SCROLL UP: Close hands and hide title
-            hands.classList.remove('active');
-            title.classList.remove('active');
-        }
-    });
-}, observerOptions);
-
-// Start watching the container
-handsObserver.observe(document.querySelector('.hands-section-container'));
 
 
 
