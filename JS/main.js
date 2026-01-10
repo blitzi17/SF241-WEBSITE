@@ -92,6 +92,52 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+/* --- TITLE REVEAL ANIMATION (STAGGERED BLUR) --- */
+
+// 1. Select all elements with the 'reveal-text' class
+const revealTitles = document.querySelectorAll('.reveal-text');
+
+revealTitles.forEach(title => {
+    // Get the original text from the HTML
+    const text = title.textContent;
+    // Clear the original text content
+    title.textContent = ""; 
+    
+    // Split the text into individual characters and wrap each in a <span>
+    [...text].forEach((char, i) => {
+        const span = document.createElement('span');
+        
+        // Handle spaces so they don't disappear
+        span.textContent = char === " " ? "\u00A0" : char; 
+        
+        // Add a staggered delay for each letter (0.07s wave)
+        // This creates the "Hello, you!" timing
+        span.style.transitionDelay = `${i * 0.07}s`; 
+        
+        title.append(span);
+    });
+});
+
+// 2. Set up the Intersection Observer to trigger when titles come into view
+const textObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add 'active' class to start the CSS transition
+            entry.target.classList.add('active');
+        } else {
+            // Optional: Remove 'active' to re-animate when scrolling back up
+            entry.target.classList.remove('active');
+        }
+    });
+}, { 
+    // Trigger when 50% of the title is visible on screen
+    threshold: 0.5 
+});
+
+// Start observing each title
+revealTitles.forEach(t => textObserver.observe(t));
+
+
 
 
 
