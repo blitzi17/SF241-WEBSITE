@@ -252,32 +252,25 @@ header {
     display: block;
 }
 
-/* FIX THE OVERLAY (Match 'hover-overlay' from your HTML) */
 .hover-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Dark aesthetic tint */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    /* Animation: Fade in/out */
-    opacity: 0; 
+    opacity: 0;
     transition: opacity 0.3s ease;
     
-    /* CRITICAL: Allows clicks to go THROUGH to the gallery-item */
+    /* THE FIX: This allows your click to reach the 'onclick' on the gallery-item */
     pointer-events: none; 
     z-index: 2;
 }
-/* Show the overlay when hovering the item */
+
 .gallery-item:hover .hover-overlay {
     opacity: 1;
 }
-
 /* Style the text inside the overlay */
 .hover-overlay h3 {
     color: #fdf5e6;
