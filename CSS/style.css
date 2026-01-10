@@ -229,18 +229,6 @@ header {
     line-height: 1.4; 
     padding: 20px 0; 
 }
-
-.reveal-text {
-    /* FIX: Change from 'hidden' to 'visible' so blurs/tails aren't cut */
-    overflow: visible; 
-    display: block;
-}
-/* Active state triggered on scroll */
-.reveal-text.active span {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0) scale(1);
-}
 /* --- GALLERY FIX (MAXIMIZED & RECTANGLE) --- */
 .gallery-container {
     display: flex;
